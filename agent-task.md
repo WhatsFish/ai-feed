@@ -128,17 +128,47 @@ write it on Twitter or in a technical blog — sharp, mixed-script, opinionated.
 Same shape as the English JSON, same key order, just different content for the
 translatable fields. Parse-validate before exit.
 
-## Second run of the day
+## Run slots — at most 2 per day
 
-If `digest/$(date +%F).json` already exists:
-- Read it.
-- Append a new run object to `runs[]` reflecting only what's new in this run.
-- Update `stats` to reflect the latest run.
-- Write the full JSON back atomically (write to a temp file, rename).
-- Re-translate to refresh `digest/$(date +%F).zh.json` from the updated English JSON.
+A day's `runs[]` array must contain **at most two entries**, one per scheduled
+cron window:
 
-If `digest/$(date +%F).md` already exists:
-- Append a new section like `\n---\n## Run 2 — HH:MM\n...` instead of overwriting.
+- **Morning slot** — the run's `run_at` converted to UTC has hour `< 12`
+  (covers the 00:13 UTC / 08:13 Asia/Shanghai cron and any reruns before noon UTC).
+- **Evening slot** — UTC hour `>= 12` (covers the 12:13 UTC / 20:13 Asia/Shanghai
+  cron and any reruns after noon UTC).
+
+When you start a run:
+
+1. Determine the current run's slot from the current UTC time (`date -u +%H`).
+2. Read `digest/$(date +%F).json` if it exists.
+3. Find the run object in `runs[]` whose `run_at` (converted to UTC) falls in
+   the **same slot** as the current run.
+   - **If found, merge in place:**
+     - Take the union of `developments` keyed by `id` (newer wins on conflict).
+     - Replace `run_at`, `headline`, `themes`, `worth_reading`, and
+       `skipped_summary` with the current run's values.
+     - The merged run replaces the existing slot entry; do not append a new one.
+   - **If not found, append** a new run object to `runs[]`.
+4. The final `runs[]` length must always be `<= 2`. Update `stats` to reflect
+   the current run's fetch.
+5. Write the full JSON back atomically (write to a temp file, then rename).
+6. Re-translate `digest/$(date +%F).zh.json` from the updated English JSON
+   under the same merge rule.
+
+For the markdown digest, structure as **one section per occupied slot**:
+
+```
+## Morning — HH:MM
+... headline, developments, themes, worth-reading, skipped ...
+
+## Evening — HH:MM
+... ...
+```
+
+If you're updating a slot that already has a section, **replace the entire
+section** with fresh prose reflecting the merged run. Do not stack new "Run 2"
+or "Run 3" sections — that's the failure mode to avoid.
 
 ## Synthesis style
 

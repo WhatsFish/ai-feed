@@ -3,192 +3,250 @@
   "tz": "Asia/Shanghai",
   "runs": [
     {
-      "run_at": "2026-05-06T18:00:00+08:00",
-      "headline": "Anthropic is buying compute from xAI and SpaceX — the three companies most loudly competing for AGI are now openly trading the infrastructure none of them can build fast enough alone.",
+      "run_at": "2026-05-06T19:30:00+08:00",
+      "headline": "A thin third run: Amazon's Andy Jassy joins the AI-capex justification tour, and the day's real news is already in runs 1 and 2.",
       "developments": [
         {
           "id": "anthropic-xai-spacex-compute-deal",
           "title": "Anthropic buys compute from xAI and SpaceX",
           "take": "A year ago, 'Anthropic rents GPUs from the company that makes Grok' would have read as parody. It is now an official press release from both sides. Compute has decoupled from ideology — frontier labs are landlords renting each other's fabric, and that's the most economically revealing AI story of 2026 so far.",
           "links": [
-            { "label": "Anthropic announcement", "url": "https://www.anthropic.com/news/higher-limits-spacex" },
-            { "label": "xAI announcement", "url": "https://x.ai/news/anthropic-compute-partnership" }
+            {
+              "label": "Anthropic announcement",
+              "url": "https://www.anthropic.com/news/higher-limits-spacex"
+            },
+            {
+              "label": "xAI announcement",
+              "url": "https://x.ai/news/anthropic-compute-partnership"
+            }
           ],
-          "tags": ["compute", "infrastructure", "vendor:anthropic", "vendor:xai", "industry"]
+          "tags": [
+            "compute",
+            "infrastructure",
+            "vendor:anthropic",
+            "vendor:xai",
+            "industry"
+          ]
         },
         {
           "id": "openai-mrc-rdma-protocol",
           "title": "OpenAI publishes MRC, a custom RDMA transport, via OCP",
           "take": "MRC (Multipath Reliable Connection) is OpenAI's networking protocol for gigascale training, contributed to the Open Compute Project. STH confirms it is the Spectrum-X custom transport — meaning OpenAI co-designed the wire protocol for Nvidia's flagship AI fabric. Combined with the Stargate expansion, OpenAI is increasingly positioning itself as a networking-and-datacenter company that happens to ship models.",
           "links": [
-            { "label": "OpenAI MRC post", "url": "https://openai.com/index/mrc-supercomputer-networking" },
-            { "label": "STH technical breakdown", "url": "https://www.servethehome.com/nvidia-spectrum-x-mrc-is-the-custom-rdma-transport-protocol-for-gigascale-ai/" },
-            { "label": "Stargate expansion", "url": "https://openai.com/index/building-the-compute-infrastructure-for-the-intelligence-age" }
+            {
+              "label": "OpenAI MRC post",
+              "url": "https://openai.com/index/mrc-supercomputer-networking"
+            },
+            {
+              "label": "STH technical breakdown",
+              "url": "https://www.servethehome.com/nvidia-spectrum-x-mrc-is-the-custom-rdma-transport-protocol-for-gigascale-ai/"
+            },
+            {
+              "label": "Stargate expansion",
+              "url": "https://openai.com/index/building-the-compute-infrastructure-for-the-intelligence-age"
+            }
           ],
-          "tags": ["compute", "infrastructure", "networking", "vendor:openai", "vendor:nvidia"]
+          "tags": [
+            "compute",
+            "infrastructure",
+            "networking",
+            "vendor:openai",
+            "vendor:nvidia"
+          ]
         },
         {
           "id": "gpt-5-5-instant-default",
           "title": "GPT-5.5 Instant ships as the new ChatGPT default",
           "take": "The model itself is a routine point-upgrade. The story is cadence: GPT-5.5 in April, GPT-5.5 Instant two weeks later, plus a bio bug bounty in parallel. Frontier model launches have stopped being events and become a drip feed; the news is no longer benchmarks but deployment friction.",
           "links": [
-            { "label": "Launch post", "url": "https://openai.com/index/gpt-5-5-instant" },
-            { "label": "System card", "url": "https://openai.com/index/gpt-5-5-instant-system-card" }
+            {
+              "label": "Launch post",
+              "url": "https://openai.com/index/gpt-5-5-instant"
+            },
+            {
+              "label": "System card",
+              "url": "https://openai.com/index/gpt-5-5-instant-system-card"
+            }
           ],
-          "tags": ["llm", "vendor:openai", "model-release"]
+          "tags": [
+            "llm",
+            "vendor:openai",
+            "model-release"
+          ]
         },
         {
           "id": "claude-managed-agents-dreaming",
           "title": "Code w/ Claude 2026: Managed Agents add 'dreaming' and multiagent orchestration",
           "take": "Anthropic's dev event introduced offline memory consolidation ('dreaming'), explicit outcomes, and multiagent coordination for Claude Managed Agents. Strip the marketing — 'dreaming' is replay/consolidation between sessions, the obvious next step once agents accumulate enough state to need garbage collection. Useful primitive, not the philosophical leap the framing implies.",
           "links": [
-            { "label": "Anthropic announcement", "url": "https://claude.com/blog/new-in-claude-managed-agents" },
-            { "label": "Ars Technica", "url": "https://arstechnica.com/ai/2026/05/anthropics-claude-can-now-dream-sort-of/" },
-            { "label": "Simon Willison live blog", "url": "https://simonwillison.net/2026/May/6/code-w-claude-2026/" }
+            {
+              "label": "Anthropic announcement",
+              "url": "https://claude.com/blog/new-in-claude-managed-agents"
+            },
+            {
+              "label": "Ars Technica",
+              "url": "https://arstechnica.com/ai/2026/05/anthropics-claude-can-now-dream-sort-of/"
+            },
+            {
+              "label": "Simon Willison live blog",
+              "url": "https://simonwillison.net/2026/May/6/code-w-claude-2026/"
+            }
           ],
-          "tags": ["agent", "vendor:anthropic", "memory", "orchestration"]
+          "tags": [
+            "agent",
+            "vendor:anthropic",
+            "memory",
+            "orchestration"
+          ]
         },
         {
           "id": "vibe-physics-gpt-5-quantum-gravity",
           "title": "GPT-5.x derives new results in theoretical physics with Alex Lupsasca",
           "take": "Lupsasca walks through how GPT-5.x produced novel results in theoretical physics and quantum gravity. The claim is significant but the methodology matters: 'model-discovered' research still depends on human verification at every step. Even with that caveat, this is the strongest concrete data point yet that frontier models can contribute to research-grade theory, and considerably more substantive than another agent benchmark.",
           "links": [
-            { "label": "Latent Space episode", "url": "https://www.latent.space/p/lupsasca" }
+            {
+              "label": "Latent Space episode",
+              "url": "https://www.latent.space/p/lupsasca"
+            }
           ],
-          "tags": ["paper", "vendor:openai", "science", "reasoning", "llm"]
-        }
-      ],
-      "themes": [
-        {
-          "title": "Compute is the moat — and it's a rented one",
-          "body": "Anthropic↔xAI, OpenAI's MRC contribution to OCP, and continued Stargate expansion all point the same direction. Model differentiation is collapsing, but no one has enough fabric. Expect more cross-rival compute swaps before they stop being newsworthy."
+          "tags": [
+            "paper",
+            "vendor:openai",
+            "science",
+            "reasoning",
+            "llm"
+          ]
         },
-        {
-          "title": "Agents are the deployment surface, not chat",
-          "body": "ChatGPT workspace agents, Codex's Symphony orchestration spec, Claude Managed Agents with dreaming, and HuggingFace's top-trending OpenSeeker-v2 paper all treat the agent loop as the unit of product. The 2024 chat metaphor is being retired across vendors in real time."
-        }
-      ],
-      "worth_reading": [
-        {
-          "label": "Anthropic ↔ xAI/SpaceX compute partnership",
-          "url": "https://www.anthropic.com/news/higher-limits-spacex",
-          "why": "The year's most revealing industry story is hiding inside a usage-limit press release."
-        },
-        {
-          "label": "Vibe Physics with Alex Lupsasca",
-          "url": "https://www.latent.space/p/lupsasca",
-          "why": "The most substantive 'AI does science' claim of the week, with an actual methodology walkthrough rather than a press release."
-        },
-        {
-          "label": "MolmoAct2 — open VLA for real-world robots",
-          "url": "https://huggingface.co/papers/2605.02881",
-          "why": "Top HuggingFace paper today (195 upvotes); open-weight VLA targeting cheap hardware suggests the open-vs-closed gap in robotics may be defensible."
-        }
-      ],
-      "skipped_summary": "Skipped: the long tail of Codex academy and documentation pages, every customer-success post (Choco, Hyatt, PwC, Shopify), ChatGPT Ads Manager (an ad product, not an AI story), the Apple Siri settlement (legal cleanup), most new arXiv submissions (sentiment analysis, Indic ASR, autism agents — fine work, not frontier-shifting), and the long tail of HN show-HN agent vaults. The Chrome-downloads-4GB-AI-file story is interesting but unverified."
-    },
-    {
-      "run_at": "2026-05-06T19:26:00+08:00",
-      "headline": "Two hours after run 1, the cadence confirms itself: OpenAI ships enterprise plumbing — Agents SDK runtime, Cloudflare distribution, a cyber-tier model — while the financial press starts pricing AI as a debt story rather than a capability one.",
-      "developments": [
         {
           "id": "openai-agents-sdk-native-sandbox",
           "title": "OpenAI Agents SDK adds native sandbox execution and a model-native harness",
           "take": "The next evolution of the Agents SDK folds the runtime into the SDK itself — sandboxed tool calls, a harness the models were trained against, long-running file/tool state. This is the SDK becoming the substrate. Combined with the Symphony orchestration spec from earlier today, the pattern is clear: OpenAI is locking down the agent execution layer, not just the model API.",
           "links": [
-            { "label": "OpenAI announcement", "url": "https://openai.com/index/the-next-evolution-of-the-agents-sdk" },
-            { "label": "Symphony spec", "url": "https://openai.com/index/open-source-codex-orchestration-symphony" }
+            {
+              "label": "OpenAI announcement",
+              "url": "https://openai.com/index/the-next-evolution-of-the-agents-sdk"
+            },
+            {
+              "label": "Symphony spec",
+              "url": "https://openai.com/index/open-source-codex-orchestration-symphony"
+            }
           ],
-          "tags": ["agent", "vendor:openai", "sdk", "infrastructure"]
+          "tags": [
+            "agent",
+            "vendor:openai",
+            "sdk",
+            "infrastructure"
+          ]
         },
         {
           "id": "gpt-5-4-cyber-trusted-access",
           "title": "GPT-5.4-Cyber gated behind Trusted Access for Cyber defenders",
           "take": "OpenAI expanded the Trusted Access for Cyber program and dropped GPT-5.4-Cyber inside it — vetted defenders only. Tiered model access for safety-sensitive domains (cyber, bio) is becoming the real product surface for advanced capabilities, not the public API. Capability disclosures will increasingly happen inside customer programs, not press releases.",
           "links": [
-            { "label": "Trusted Access announcement", "url": "https://openai.com/index/scaling-trusted-access-for-cyber-defense" }
+            {
+              "label": "Trusted Access announcement",
+              "url": "https://openai.com/index/scaling-trusted-access-for-cyber-defense"
+            }
           ],
-          "tags": ["safety", "vendor:openai", "cyber", "policy"]
+          "tags": [
+            "safety",
+            "vendor:openai",
+            "cyber",
+            "policy"
+          ]
         },
         {
           "id": "cloudflare-openai-agent-cloud",
           "title": "Cloudflare brings OpenAI's GPT-5.4 and Codex to Agent Cloud",
           "take": "Cloudflare's pitch: the agent runtime sits at the edge, not at OpenAI's datacenter. Pair this with OpenAI's AWS landing earlier today and OpenAI is no longer demanding traffic come to it — the model goes wherever the customer's compute already is. Distribution is being decoupled from the home cloud.",
           "links": [
-            { "label": "OpenAI / Cloudflare post", "url": "https://openai.com/index/cloudflare-openai-agent-cloud" },
-            { "label": "OpenAI on AWS", "url": "https://openai.com/index/openai-on-aws" }
+            {
+              "label": "OpenAI / Cloudflare post",
+              "url": "https://openai.com/index/cloudflare-openai-agent-cloud"
+            },
+            {
+              "label": "OpenAI on AWS",
+              "url": "https://openai.com/index/openai-on-aws"
+            }
           ],
-          "tags": ["agent", "vendor:openai", "vendor:cloudflare", "infrastructure", "distribution"]
+          "tags": [
+            "agent",
+            "vendor:openai",
+            "vendor:cloudflare",
+            "infrastructure",
+            "distribution"
+          ]
         },
         {
           "id": "ai-debt-invesco-capex",
           "title": "Invesco: 'Big Tech needs every dollar it can get in AI debt'",
           "take": "The cleanest external framing of run 1's compute-deal theme. Bloomberg's piece, surfaced via HN, treats AI infrastructure as a capex/debt story. Anthropic↔xAI, Stargate, MRC — institutional investors aren't underwriting capabilities, they're underwriting the buildout. The competitive frontier is balance-sheet capacity, not benchmarks.",
           "links": [
-            { "label": "Bloomberg / Invesco", "url": "https://www.bloomberg.com/news/articles/2026-05-06/invesco-says-big-tech-needs-every-dollar-it-can-get-in-ai-debt" }
+            {
+              "label": "Bloomberg / Invesco",
+              "url": "https://www.bloomberg.com/news/articles/2026-05-06/invesco-says-big-tech-needs-every-dollar-it-can-get-in-ai-debt"
+            }
           ],
-          "tags": ["compute", "infrastructure", "industry", "finance"]
-        }
-      ],
-      "themes": [
-        {
-          "title": "The product is the runtime, not the model",
-          "body": "Agents SDK with native sandboxing, Symphony orchestration, GPT-5.4-Cyber gated through Trusted Access, Cloudflare Agent Cloud — none of these are model news, all of them are substrate news. Every shipping announcement from OpenAI today is about controlling where and how agents execute, which is exactly where the recurring revenue lives."
+          "tags": [
+            "compute",
+            "infrastructure",
+            "industry",
+            "finance"
+          ]
         },
-        {
-          "title": "Capex, not capabilities",
-          "body": "Anthropic↔xAI in run 1, Invesco's debt comment in run 2, Stargate and MRC running parallel. Across editorial sources, the AI story is being re-framed as an infrastructure financing story. Expect more bond issuances and compute swaps before more leaderboard wins."
-        }
-      ],
-      "worth_reading": [
-        {
-          "label": "OpenAI Agents SDK — next evolution",
-          "url": "https://openai.com/index/the-next-evolution-of-the-agents-sdk",
-          "why": "Substrate-layer change disguised as a feature drop — read for the architecture, not the marketing copy."
-        },
-        {
-          "label": "Invesco on AI debt (Bloomberg)",
-          "url": "https://www.bloomberg.com/news/articles/2026-05-06/invesco-says-big-tech-needs-every-dollar-it-can-get-in-ai-debt",
-          "why": "The cleanest external framing of where AI margins are actually flowing — it's the balance sheet, not the leaderboard."
-        },
-        {
-          "label": "PhysicianBench",
-          "url": "https://huggingface.co/papers/2605.02240",
-          "why": "Agent evaluation grounded in real EHR data instead of synthetic clinical scaffolding — the harder kind of benchmark."
-        }
-      ],
-      "skipped_summary": "DeepMind's blog backfill of October/November 2025 posts (WeatherNext 2, SIMA 2, MedGemma, T5Gemma, AI-for-Math) appeared in the feed but isn't fresh news. Eight more OpenAI Academy pages (Financial Services, Sales, Customer Success, Image Generation) — pure docs. HN noise: AI video clippers, agent logging proxies, the inevitable 'exclude AI from Show HN' meta thread, an 'AI Architecture Governance for Governments' landing page. ZDNet's recap of Anthropic 'dreaming' is the same story already covered in run 1."
-    },
-    {
-      "run_at": "2026-05-06T19:30:00+08:00",
-      "headline": "A thin third run: Amazon's Andy Jassy joins the AI-capex justification tour, and the day's real news is already in runs 1 and 2.",
-      "developments": [
         {
           "id": "amazon-jassy-ai-capex-defense",
           "title": "Andy Jassy publicly defends Amazon's AI capex to investors",
           "take": "CNBC, surfaced via HN: Jassy is now telling shareholders the AI buildout will pay back. Same beat as Invesco from run 2, but this time it's a CEO making the pitch instead of an asset manager. Amazon joining Anthropic, OpenAI and Microsoft in the 'trust us, the spend is rational' chorus is the tell — every hyperscaler now needs an investor-relations narrative for AI capex, because the numbers no longer fit a normal margin model.",
           "links": [
-            { "label": "CNBC", "url": "https://www.cnbc.com/2026/05/04/andy-jassy-amazon-investors-rewarded-ai-spending.html" }
+            {
+              "label": "CNBC",
+              "url": "https://www.cnbc.com/2026/05/04/andy-jassy-amazon-investors-rewarded-ai-spending.html"
+            }
           ],
-          "tags": ["compute", "infrastructure", "industry", "finance", "vendor:amazon"]
+          "tags": [
+            "compute",
+            "infrastructure",
+            "industry",
+            "finance",
+            "vendor:amazon"
+          ]
         },
         {
           "id": "rl-orchestration-traces-paper",
           "title": "RL for LLM-based Multi-Agent Systems through Orchestration Traces",
           "take": "HuggingFace paper that lands directly on top of today's Symphony / Agents SDK news: instead of optimizing individual agent actions, train RL policies over the spawn/delegate/communicate/aggregate/stop graph. This is the academic version of what OpenAI shipped commercially this morning — the orchestration trace, not the token, is the unit of optimization. Worth reading as the first credible attempt to formalize what a 'good' agentic loop looks like.",
           "links": [
-            { "label": "Paper", "url": "https://huggingface.co/papers/2605.02801" }
+            {
+              "label": "Paper",
+              "url": "https://huggingface.co/papers/2605.02801"
+            }
           ],
-          "tags": ["paper", "agent", "orchestration", "reinforcement-learning", "evaluation"]
+          "tags": [
+            "paper",
+            "agent",
+            "orchestration",
+            "reinforcement-learning",
+            "evaluation"
+          ]
         },
         {
           "id": "grand-challenge-reliable-coding-agents",
           "title": "A Grand Challenge for Reliable Coding in the Age of AI Agents",
           "take": "arXiv perspective piece, low HN signal so far, but the framing is correct: the Codex/Claude Code shipping cadence is dramatically outpacing any rigorous notion of correctness for AI-written code. Worth flagging as the counter-narrative to today's runtime/SDK marketing — the substrate is consolidating faster than the safety story.",
           "links": [
-            { "label": "arXiv", "url": "https://arxiv.org/abs/2603.17150" }
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2603.17150"
+            }
           ],
-          "tags": ["paper", "agent", "evaluation", "safety", "coding"]
+          "tags": [
+            "paper",
+            "agent",
+            "evaluation",
+            "safety",
+            "coding"
+          ]
         }
       ],
       "themes": [
