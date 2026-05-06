@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 import { auth, signOut } from "@/lib/auth";
 import "./globals.css";
+
+const UMAMI_SRC = process.env.NEXT_PUBLIC_UMAMI_SRC;
+const UMAMI_ID = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID;
 
 export const metadata: Metadata = {
   title: "ai-feed",
@@ -13,6 +17,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en">
       <body className="min-h-screen bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100 antialiased font-sans">
+        {UMAMI_SRC && UMAMI_ID ? (
+          <Script defer src={UMAMI_SRC} data-website-id={UMAMI_ID} strategy="afterInteractive" />
+        ) : null}
         <header className="border-b border-neutral-200 dark:border-neutral-800">
           <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between text-sm">
             <Link href="/" className="font-semibold tracking-tight">
