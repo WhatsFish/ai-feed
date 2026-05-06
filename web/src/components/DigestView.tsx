@@ -20,7 +20,7 @@ export function DigestView({ digest, lang }: { digest: Digest; lang: "en" | "zh"
       <header className="space-y-1">
         <div className="flex items-center justify-between gap-4">
           <h1 className="text-2xl font-semibold tracking-tight">{dateLabel}</h1>
-          <LangToggle lang={lang} date={digest.date} />
+          <LangToggle lang={lang} />
         </div>
         <p className="text-xs text-neutral-500 font-mono">
           {digest.runs.length} run{digest.runs.length === 1 ? "" : "s"} · {digest.stats.raw_items} raw items ·{" "}

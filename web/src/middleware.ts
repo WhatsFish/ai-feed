@@ -1,24 +1,23 @@
 import { auth } from "@/lib/auth";
 
+/**
+ * Public-by-default. Only AI features (live calls to Foundry) are auth-gated:
+ * - /api/interpret  — POST, hits Foundry, requires login
+ *
+ * Everything else (digest pages, /archive, /d/<date>, /api/auth/*) is open
+ * so unauthenticated readers can browse the daily synthesis and switch
+ * EN/中文 freely. The agent pre-generates both language versions.
+ */
 export default auth((req) => {
-  const isAuthed = !!req.auth;
   const { pathname } = req.nextUrl;
 
-  // basePath /feed is preserved in pathname here; check both the bare paths
-  // (so the middleware also works in dev or if basePath ever changes) and the
-  // /feed-prefixed forms.
-  const open =
-    pathname === "/login" ||
-    pathname === "/feed/login" ||
-    pathname.startsWith("/api/auth") ||
-    pathname.startsWith("/feed/api/auth");
-  if (open) return;
+  const requiresAuth =
+    pathname.startsWith("/api/interpret") || pathname.startsWith("/feed/api/interpret");
 
-  if (!isAuthed) {
-    const loginPath = pathname.startsWith("/feed") ? "/feed/login" : "/login";
-    const url = new URL(loginPath, req.nextUrl.origin);
-    url.searchParams.set("from", pathname);
-    return Response.redirect(url);
+  if (!requiresAuth) return;
+
+  if (!req.auth) {
+    return Response.json({ error: "unauthorized" }, { status: 401 });
   }
 });
 

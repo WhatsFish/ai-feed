@@ -1,0 +1,156 @@
+{
+  "date": "2026-05-06",
+  "tz": "Asia/Shanghai",
+  "runs": [
+    {
+      "run_at": "2026-05-06T18:00:00+08:00",
+      "headline": "Anthropic 正在从 xAI 和 SpaceX 购买计算资源 —— 三家最响亮地竞争 AGI 的公司现在公开交易彼此无法单独快速构建的基础设施。",
+      "developments": [
+        {
+          "id": "anthropic-xai-spacex-compute-deal",
+          "title": "Anthropic 从 xAI 和 SpaceX 购买计算资源",
+          "take": "一年前，'Anthropic 从制作 Grok 的公司租用 GPU' 这句话听起来像是一个笑话。现在，它成为了双方的官方新闻稿。计算资源已经与意识形态脱钩 —— 前沿实验室是出租彼此基础设施的房东，这是 2026 年迄今为止最具经济启示性的 AI 故事。",
+          "links": [
+            {
+              "label": "Anthropic announcement",
+              "url": "https://www.anthropic.com/news/higher-limits-spacex"
+            },
+            {
+              "label": "xAI announcement",
+              "url": "https://x.ai/news/anthropic-compute-partnership"
+            }
+          ],
+          "tags": [
+            "compute",
+            "infrastructure",
+            "vendor:anthropic",
+            "vendor:xai",
+            "industry"
+          ]
+        },
+        {
+          "id": "openai-mrc-rdma-protocol",
+          "title": "OpenAI 通过 OCP 发布自定义 RDMA 传输 MRC",
+          "take": "MRC（多路径可靠连接）是 OpenAI 为大规模训练设计的网络协议，已贡献给 Open Compute Project。STH 确认它是 Spectrum-X 自定义传输 —— 这意味着 OpenAI 与 Nvidia 共同设计了旗舰 AI 基础设施的线协议。结合 Stargate 扩展，OpenAI 正日益将自己定位为一个网络和数据中心公司，它碰巧也提供模型。",
+          "links": [
+            {
+              "label": "OpenAI MRC post",
+              "url": "https://openai.com/index/mrc-supercomputer-networking"
+            },
+            {
+              "label": "STH technical breakdown",
+              "url": "https://www.servethehome.com/nvidia-spectrum-x-mrc-is-the-custom-rdma-transport-protocol-for-gigascale-ai/"
+            },
+            {
+              "label": "Stargate expansion",
+              "url": "https://openai.com/index/building-the-compute-infrastructure-for-the-intelligence-age"
+            }
+          ],
+          "tags": [
+            "compute",
+            "infrastructure",
+            "networking",
+            "vendor:openai",
+            "vendor:nvidia"
+          ]
+        },
+        {
+          "id": "gpt-5-5-instant-default",
+          "title": "GPT-5.5 Instant 作为新的 ChatGPT 默认值发布",
+          "take": "该模型本身是一个常规的点升级。这个故事的重点是发布节奏：四月份的 GPT-5.5，两周后发布的 GPT-5.5 Instant，以及平行的生物 bug 赏金。前沿模型的发布已经不再是事件，而成为了一种滴灌；新闻不再是基准测试，而是部署的摩擦。",
+          "links": [
+            {
+              "label": "Launch post",
+              "url": "https://openai.com/index/gpt-5-5-instant"
+            },
+            {
+              "label": "System card",
+              "url": "https://openai.com/index/gpt-5-5-instant-system-card"
+            }
+          ],
+          "tags": [
+            "llm",
+            "vendor:openai",
+            "model-release"
+          ]
+        },
+        {
+          "id": "claude-managed-agents-dreaming",
+          "title": "Code w/ Claude 2026：Managed Agents 添加 '梦境' 和多代理编排",
+          "take": "Anthropic 的开发者活动引入了离线内存整合（'梦境'），显式结果和多代理协调，用于 Claude Managed Agents。去掉营销话术 —— '梦境' 是会话之间的重放/整合，一旦代理积累了足够的状态就需要垃圾回收的明显下一步。有用的原语，而不是营销框架所暗示的哲学飞跃。",
+          "links": [
+            {
+              "label": "Anthropic announcement",
+              "url": "https://claude.com/blog/new-in-claude-managed-agents"
+            },
+            {
+              "label": "Ars Technica",
+              "url": "https://arstechnica.com/ai/2026/05/anthropics-claude-can-now-dream-sort-of/"
+            },
+            {
+              "label": "Simon Willison live blog",
+              "url": "https://simonwillison.net/2026/May/6/code-w-claude-2026/"
+            }
+          ],
+          "tags": [
+            "agent",
+            "vendor:anthropic",
+            "memory",
+            "orchestration"
+          ]
+        },
+        {
+          "id": "vibe-physics-gpt-5-quantum-gravity",
+          "title": "GPT-5.x 与 Alex Lupsasca 合作在理论物理学中取得新成果",
+          "take": "Lupsasca 介绍了 GPT-5.x 如何在理论物理学和量子引力中产生新结果。这个说法很重要，但方法论很重要：'模型发现' 的研究仍然依赖于每一步的人类验证。即使有这个警告，这是迄今为止最强有力的具体数据点，证明前沿模型可以为研究级理论做出贡献，并且比另一个代理基准测试更有实质性。",
+          "links": [
+            {
+              "label": "Latent Space episode",
+              "url": "https://www.latent.space/p/lupsasca"
+            }
+          ],
+          "tags": [
+            "paper",
+            "vendor:openai",
+            "science",
+            "reasoning",
+            "llm"
+          ]
+        }
+      ],
+      "themes": [
+        {
+          "title": "计算资源是护城河 —— 而且它是租来的",
+          "body": "Anthropic↔xAI，OpenAI 向 OCP 贡献 MRC，以及持续的 Stargate 扩展都指向同一个方向。模型差异化正在崩溃，但没有人拥有足够的基础设施。预计在它们不再成为新闻之前，会有更多的跨竞争对手计算资源交换。"
+        },
+        {
+          "title": "代理是部署表面，而不是聊天",
+          "body": "ChatGPT 工作空间代理，Codex 的 Symphony 编排规范，Claude Managed Agents 的梦境，以及 HuggingFace 的顶级趋势 OpenSeeker-v2 论文都将代理循环视为产品的单位。2024 年的聊天隐喻正在被各个供应商实时退役。"
+        }
+      ],
+      "worth_reading": [
+        {
+          "label": "Anthropic ↔ xAI/SpaceX 计算合作伙伴关系",
+          "url": "https://www.anthropic.com/news/higher-limits-spacex",
+          "why": "今年最具启示性的行业故事隐藏在一个使用限制新闻稿中。"
+        },
+        {
+          "label": "Vibe Physics 与 Alex Lupsasca",
+          "url": "https://www.latent.space/p/lupsasca",
+          "why": "本周最有实质性的 'AI 做科学' 声称，具有实际的方法论演示，而不是新闻稿。"
+        },
+        {
+          "label": "MolmoAct2 —— 开源 VLA，针对现实世界的机器人",
+          "url": "https://huggingface.co/papers/2605.02881",
+          "why": "今日 HuggingFace 的顶级论文（195 个赞同票）；针对廉价硬件的开源 VLA 表明，机器人领域的开源与闭源之间的差距可能是可以防御的。"
+        }
+      ],
+      "skipped_summary": "跳过：Codex 学院和文档页面的长尾，所有客户成功帖子（Choco，Hyatt，PwC，Shopify），ChatGPT Ads Manager（广告产品，而不是 AI 故事），Apple Siri 和解（法律清理），大多数新 arXiv 提交（情感分析，Indic ASR，自闭症代理 —— 良好的工作，但不是开创性的），以及 HN show-HN 代理库的长尾。Chrome 下载 4GB AI 文件的故事很有趣，但未经验证。"
+    }
+  ],
+  "stats": {
+    "raw_items": 28,
+    "sources_ok": 10,
+    "sources_failed": []
+  }
+}
