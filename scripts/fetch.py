@@ -6,7 +6,6 @@ and appends new items to today's markdown digest under feeds/.
 Pure stdlib. Tolerant of both RSS 2.0 and Atom. Fails per-source, never globally.
 """
 import json
-import os
 import re
 import sys
 import urllib.request
@@ -25,8 +24,11 @@ LOG = ROOT / "fetch.log"
 
 UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 ai-feed/0.1"
 TIMEOUT = 15
-MAX_PER_SOURCE = 8           # cap items per source per run
+MAX_PER_SOURCE = 8           # default cap items per source per run
 DESC_CHARS = 280             # truncate excerpts
+
+# Sources whose URL matches these substrings get a custom JSON handler
+HF_DAILY_PAPERS = "huggingface.co/api/daily_papers"
 
 
 def log(msg: str) -> None:
@@ -123,6 +125,31 @@ def parse_date(s: str):
         return None
 
 
+def extract_hf_daily_papers(raw: bytes):
+    """HF daily_papers JSON → unified item format, pre-sorted by upvotes desc."""
+    data = json.loads(raw)
+    items = []
+    for entry in data:
+        paper = entry.get("paper") or {}
+        pid = paper.get("id") or ""
+        title = paper.get("title") or entry.get("title") or ""
+        summary = paper.get("summary") or entry.get("summary") or ""
+        upvotes = paper.get("upvotes") or 0
+        published = entry.get("publishedAt") or paper.get("publishedAt") or ""
+        link = f"https://huggingface.co/papers/{pid}" if pid else ""
+        prefix = f"[⬆{upvotes}] " if upvotes else ""
+        items.append({
+            "title": prefix + strip_html(title),
+            "link": link,
+            "date": parse_date(published),
+            "summary": strip_html(summary),
+            "guid": f"hf-papers:{pid}" if pid else link,
+            "_upvotes": upvotes,
+        })
+    items.sort(key=lambda x: x.get("_upvotes", 0), reverse=True)
+    return items
+
+
 def extract_items(xml_bytes: bytes):
     """Yield dicts {title, link, date, summary, guid} for either RSS or Atom."""
     try:
@@ -216,19 +243,23 @@ def main():
     sections = []
     total_new = 0
     for name, url in sources:
+        cap = MAX_PER_SOURCE
         try:
-            xml = fetch_url(url)
-            items = extract_items(xml)
-        except (urllib.error.URLError, urllib.error.HTTPError, RuntimeError, TimeoutError) as e:
+            raw = fetch_url(url)
+            if HF_DAILY_PAPERS in url:
+                items = extract_hf_daily_papers(raw)
+                items_sorted = items  # already by upvotes desc
+                cap = 5               # only the hottest
+            else:
+                items = extract_items(raw)
+                items_sorted = sorted(
+                    items,
+                    key=lambda x: x["date"] or datetime(1970, 1, 1, tzinfo=timezone.utc),
+                    reverse=True,
+                )
+        except (urllib.error.URLError, urllib.error.HTTPError, RuntimeError, TimeoutError, json.JSONDecodeError) as e:
             log(f"  [{name}] FAIL: {e}")
             continue
-
-        # newest first by date when available, else preserve feed order
-        items_sorted = sorted(
-            items,
-            key=lambda x: x["date"] or datetime(1970, 1, 1, tzinfo=timezone.utc),
-            reverse=True,
-        )
 
         new_items = []
         for it in items_sorted:
@@ -237,7 +268,7 @@ def main():
                 continue
             seen.add(key)
             new_items.append(it)
-            if len(new_items) >= MAX_PER_SOURCE:
+            if len(new_items) >= cap:
                 break
 
         log(f"  [{name}] {len(items)} items, {len(new_items)} new")

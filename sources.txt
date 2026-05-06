@@ -15,9 +15,8 @@ Latent Space | https://www.latent.space/feed
 Ahead of AI (Sebastian Raschka) | https://magazine.sebastianraschka.com/feed
 
 # --- 论文 / 趋势 ---
-HuggingFace Daily Papers | https://jamesg.blog/hf-papers.xml
-arXiv cs.CL | https://export.arxiv.org/rss/cs.CL
-arXiv cs.LG | https://export.arxiv.org/rss/cs.LG
+# HF Daily Papers: 社区按 upvotes 投票，每天 top 50；脚本特殊处理只取前 5
+HuggingFace Daily Papers | https://huggingface.co/api/daily_papers
 
 # --- 社区信号 ---
 HN AI search | https://hnrss.org/newest?q=GPT+OR+Claude+OR+LLM+OR+AI&count=20
