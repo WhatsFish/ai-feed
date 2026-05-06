@@ -4,7 +4,7 @@
   "runs": [
     {
       "run_at": "2026-05-06T19:30:00+08:00",
-      "headline": "稀薄的第三跑：Amazon 的 Andy Jassy 加入 AI capex 自辩巡演，今天真正的新闻已经在 run 1 和 run 2 里。",
+      "headline": "Anthropic 开始向 xAI 和 SpaceX 买算力——三家口口声声争 AGI 的公司，已经在公开互相租基础设施，因为没人能独自把 fabric 堆够。",
       "developments": [
         {
           "id": "anthropic-xai-spacex-compute-deal",
@@ -251,18 +251,46 @@
       ],
       "themes": [
         {
-          "title": "AI capex 现在需要一套投资者叙事",
-          "body": "run 2 的 Invesco、run 3 的 Jassy。两天连着，AI 的公开框架正在从产品转到资产负债表。CFO 和 CEO 现在被要求像当年解释数据中心 buildout 那样去解释 AI 支出——而反驳方的论据明显跟不上花钱的速度。"
+          "title": "算力 = 护城河——而且是租来的护城河",
+          "body": "Anthropic↔xAI、OpenAI 把 MRC 捐给 OCP、Stargate 持续扩容，全都指向同一件事：模型差异在收敛，但谁都没攒够 fabric。在跨阵营互租算力变得不再是新闻之前，类似交易还会继续出现。"
+        },
+        {
+          "title": "Agent 才是产品的承载形态，不再是 chat",
+          "body": "ChatGPT workspace agents、Codex 的 Symphony 编排规范、Claude Managed Agents + dreaming，加上 HuggingFace 当日热度最高的 OpenSeeker-v2 论文——所有人都把 agent 循环当作产品单元。把 AI 当聊天工具的 2024 年范式，正在被各家同时放弃。"
+        },
+        {
+          "title": "比的是 capex，不是能力",
+          "body": "Anthropic↔xAI 算力交易、Invesco 谈 AI 债务、再加并行的 Stargate 与 MRC——多个编辑视角都在把 AI 故事重新框成基础设施融资故事。在下一波 leaderboard 胜利出现之前，会先看到更多债券发行和算力互换。"
         }
       ],
       "worth_reading": [
         {
-          "label": "RL through Orchestration Traces",
-          "url": "https://huggingface.co/papers/2605.02801",
-          "why": "在 agent 上做 RL，正确的对象是 orchestration trace，不是单次 tool call。OpenAI 今天商业落地的东西，这是它第一份像样的学术陈述。"
+          "label": "Anthropic ↔ xAI/SpaceX 算力合作",
+          "url": "https://www.anthropic.com/news/higher-limits-spacex",
+          "why": "今年最能说明行业结构的故事，藏在一份关于 usage limit 的新闻稿里。"
+        },
+        {
+          "label": "Vibe Physics with Alex Lupsasca",
+          "url": "https://www.latent.space/p/lupsasca",
+          "why": "本周 \"AI 做科研\" 这一类说法里最实在的一个，且有真正的方法论拆解，不是新闻稿。"
+        },
+        {
+          "label": "MolmoAct2——面向真实机器人的开源 VLA",
+          "url": "https://huggingface.co/papers/2605.02881",
+          "why": "今天 HuggingFace 热度第一（195 赞）；面向廉价硬件的 open-weight VLA，意味着机器人方向的开源 vs 闭源差距可能可以守得住。"
+        },
+        {
+          "label": "OpenAI Agents SDK——下一代",
+          "url": "https://openai.com/index/the-next-evolution-of-the-agents-sdk",
+          "why": "披着 feature drop 外皮的 substrate 层变动——看架构，不看营销文案。"
+        },
+        {
+          "label": "Invesco 谈 AI 债务（Bloomberg）",
+          "url": "https://www.bloomberg.com/news/articles/2026-05-06/invesco-says-big-tech-needs-every-dollar-it-can-get-in-ai-debt",
+          "why": "对 AI 利润流向最干净的外部框定——钱在资产负债表上跑，不在排行榜上。"
         }
       ],
-      "skipped_summary": "又来了 8 个 OpenAI Academy / 文档页（ChatGPT 用于金融、管理、研究、custom GPTs、文件、skills、个性化）——run 2 已经否过。8 条 DeepMind 的 2025 年 10 月 blog 回填（Gemma 3n、Gemini 2.5 Flash-Lite GA、Genie 3、AlphaEarth、Aeneas、IMO 金牌）——同样是 run 2 已经标过的回填，不是新内容。HN 低信号：Airbyte agents 数据清洗发布、一篇 Politico 谈民主党 AI affordability 话术、一篇 substack 写 \"core vs non-core work\"、HuggingFace 上的 SymptomAI（论文还行，但 run 2 的 PhysicianBench 是更好的评测故事）、SVGS / Soft Anisotropic Diagrams / Hierarchical Abstract Tree（图形和 RAG 论文，不动前沿）。"
+      "skipped_summary": "OpenAI Academy/docs 8 篇（ChatGPT for finance、managers、research、custom GPTs、files、skills、personalization）；DeepMind 2025 年 10 月的 8 篇 backfill（Gemma 3n、Gemini 2.5 Flash-Lite GA、Genie 3、AlphaEarth、Aeneas、IMO gold）——旧新闻在被重新索引；HN 低信号一批：Airbyte agents 数据清洗发布、一篇 Politico 关于民主党 AI affordability 话术的报道、一篇关于'core vs non-core work' 的 substack、HuggingFace 上的 SymptomAI，以及几篇图形学/RAG 论文（SVGS、Soft Anisotropic Diagrams、Hierarchical Abstract Tree）——都是行业内细分应用，不会改变前沿格局。"
     }
   ],
   "stats": {

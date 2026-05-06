@@ -145,9 +145,17 @@ When you start a run:
 3. Find the run object in `runs[]` whose `run_at` (converted to UTC) falls in
    the **same slot** as the current run.
    - **If found, merge in place:**
-     - Take the union of `developments` keyed by `id` (newer wins on conflict).
-     - Replace `run_at`, `headline`, `themes`, `worth_reading`, and
-       `skipped_summary` with the current run's values.
+     - Take the union of `developments` keyed by `id` (newer wins on id conflict).
+     - **Re-synthesize the prose fields (`headline`, `themes`, `worth_reading`,
+       `skipped_summary`) over the MERGED set of developments — do not copy
+       them from either the existing slot run or the current run alone.**
+       Treat the merged developments as if they were the original input and
+       write a fresh editorial pass.
+     - **Critically: never reference run numbers in the prose** ("run 1",
+       "run 2", "earlier today's run", "a thin third run"). The reader only
+       ever sees the merged result; from their point of view this is a
+       single morning or evening view.
+     - Update `run_at` to the current time.
      - The merged run replaces the existing slot entry; do not append a new one.
    - **If not found, append** a new run object to `runs[]`.
 4. The final `runs[]` length must always be `<= 2`. Update `stats` to reflect

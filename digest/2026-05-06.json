@@ -4,7 +4,7 @@
   "runs": [
     {
       "run_at": "2026-05-06T19:30:00+08:00",
-      "headline": "A thin third run: Amazon's Andy Jassy joins the AI-capex justification tour, and the day's real news is already in runs 1 and 2.",
+      "headline": "Anthropic is buying compute from xAI and SpaceX — the three companies most loudly competing for AGI are now openly trading the infrastructure none of them can build fast enough alone.",
       "developments": [
         {
           "id": "anthropic-xai-spacex-compute-deal",
@@ -251,18 +251,46 @@
       ],
       "themes": [
         {
-          "title": "AI capex now needs an investor narrative",
-          "body": "Invesco in run 2, Jassy in run 3. Two days in a row, the public framing of AI is shifting from product to balance sheet. CFOs and CEOs are now expected to justify AI spend the way they once justified data-center buildouts — and the rebuttals are starting to lag the spend."
+          "title": "Compute is the moat — and it's a rented one",
+          "body": "Anthropic↔xAI, OpenAI's MRC contribution to OCP, and continued Stargate expansion all point the same direction. Model differentiation is collapsing, but no one has enough fabric. Expect more cross-rival compute swaps before they stop being newsworthy."
+        },
+        {
+          "title": "Agents are the deployment surface, not chat",
+          "body": "ChatGPT workspace agents, Codex's Symphony orchestration spec, Claude Managed Agents with dreaming, and HuggingFace's top-trending OpenSeeker-v2 paper all treat the agent loop as the unit of product. The 2024 chat metaphor is being retired across vendors in real time."
+        },
+        {
+          "title": "Capex, not capabilities",
+          "body": "Anthropic↔xAI in run 1, Invesco's debt comment in run 2, Stargate and MRC running parallel. Across editorial sources, the AI story is being re-framed as an infrastructure financing story. Expect more bond issuances and compute swaps before more leaderboard wins."
         }
       ],
       "worth_reading": [
         {
-          "label": "RL through Orchestration Traces",
-          "url": "https://huggingface.co/papers/2605.02801",
-          "why": "The right object for RL on agents is the orchestration trace, not individual tool calls. First clean academic statement of what OpenAI shipped commercially today."
+          "label": "Anthropic ↔ xAI/SpaceX compute partnership",
+          "url": "https://www.anthropic.com/news/higher-limits-spacex",
+          "why": "The year's most revealing industry story is hiding inside a usage-limit press release."
+        },
+        {
+          "label": "Vibe Physics with Alex Lupsasca",
+          "url": "https://www.latent.space/p/lupsasca",
+          "why": "The most substantive 'AI does science' claim of the week, with an actual methodology walkthrough rather than a press release."
+        },
+        {
+          "label": "MolmoAct2 — open VLA for real-world robots",
+          "url": "https://huggingface.co/papers/2605.02881",
+          "why": "Top HuggingFace paper today (195 upvotes); open-weight VLA targeting cheap hardware suggests the open-vs-closed gap in robotics may be defensible."
+        },
+        {
+          "label": "OpenAI Agents SDK — next evolution",
+          "url": "https://openai.com/index/the-next-evolution-of-the-agents-sdk",
+          "why": "Substrate-layer change disguised as a feature drop — read for the architecture, not the marketing copy."
+        },
+        {
+          "label": "Invesco on AI debt (Bloomberg)",
+          "url": "https://www.bloomberg.com/news/articles/2026-05-06/invesco-says-big-tech-needs-every-dollar-it-can-get-in-ai-debt",
+          "why": "The cleanest external framing of where AI margins are actually flowing — it's the balance sheet, not the leaderboard."
         }
       ],
-      "skipped_summary": "Eight more OpenAI Academy / docs pages (ChatGPT for finance, managers, research, custom GPTs, files, skills, personalization) — already dismissed in run 2. Eight DeepMind blog backfill items from October 2025 (Gemma 3n, Gemini 2.5 Flash-Lite GA, Genie 3, AlphaEarth, Aeneas, IMO gold) — same backfill noted in run 2, not fresh. HN low-signal: Airbyte agents data-cleaning launch, a Politico piece on Democrats' AI affordability messaging, a substack post on 'core vs non-core work,' SymptomAI on HuggingFace (decent paper, but PhysicianBench from run 2 is the better evaluation story), SVGS / Soft Anisotropic Diagrams / Hierarchical Abstract Tree (graphics and RAG papers, not frontier-shifting)."
+      "skipped_summary": "Eight OpenAI Academy / docs pages (ChatGPT for finance, managers, research, custom GPTs, files, skills, personalization). Eight DeepMind blog backfill items from October 2025 (Gemma 3n, Gemini 2.5 Flash-Lite GA, Genie 3, AlphaEarth, Aeneas, IMO gold) — old news being indexed. Low-signal HN: Airbyte agents data-cleaning, a Politico piece on Democrats' AI affordability messaging, a substack on 'core vs non-core work,' SymptomAI on HuggingFace, plus several graphics / RAG papers (SVGS, Soft Anisotropic Diagrams, Hierarchical Abstract Tree) that are domain-specific rather than frontier-shifting."
     }
   ],
   "stats": {
