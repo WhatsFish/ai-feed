@@ -135,3 +135,24 @@ Don't add fields without updating both sides.
   long-dormant source suddenly returns.
 - `User-Agent` is a Chrome string — some hosts (Substack, certain Cloudflare
   setups) refuse non-browser UAs. Substack's `importai` still 403s anyway.
+
+## Retention
+
+`scripts/prune.sh` runs daily at 03:23 UTC (11:23 Asia/Shanghai). It:
+
+- Deletes `feeds/<date>.md` and `digest/<date>.{md,json,zh.json}` whose
+  filename date is older than `RETAIN_DAYS` (default **90**). The date
+  comes from the filename, not mtime, so file-system tarball round-trips
+  don't accidentally save or expire content.
+- Truncates `fetch.log` and `cron.log` when they exceed `LOG_MAX_BYTES`
+  (default **5 MiB**), keeping the most recent half.
+
+Override on the fly:
+
+```bash
+RETAIN_DAYS=180 LOG_MAX_BYTES=$((10*1024*1024)) scripts/prune.sh
+```
+
+The script is **disk-only** — it doesn't touch git. If you also want pruned
+files removed from the repo, follow up with a manual `git add -A && git commit`
+when you next push.
