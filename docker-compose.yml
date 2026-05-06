@@ -1,0 +1,14 @@
+services:
+  web:
+    build: ./web
+    image: ai-feed-web
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DIGEST_DIR: /data/digest
+    volumes:
+      # Read the agent's digest output. Read-write so the portal can persist
+      # translated copies (digest/<date>.zh.json) into the same directory.
+      - ./digest:/data/digest:rw
+    ports:
+      - "127.0.0.1:3003:3000"

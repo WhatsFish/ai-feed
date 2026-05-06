@@ -2,3 +2,6 @@ seen.json
 fetch.log
 cron.log
 __pycache__/
+
+# secrets for the web container
+.env

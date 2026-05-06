@@ -18,7 +18,10 @@ ai-feed/
 │   ├── fetch.py         pure-stdlib RSS+Atom+JSON fetcher
 │   └── run-agent.sh     cron entry point — wraps `claude -p`
 ├── feeds/               raw daily aggregations (input to the agent)
-├── digest/              Claude's synthesis (the actual deliverable)
+├── digest/              agent output: <date>.md + <date>.json (+ <date>.zh.json cache)
+├── web/                 Next.js 14 portal (App Router, NextAuth, Tailwind)
+├── nginx/ai-feed.conf   reverse-proxy snippet for the host nginx
+├── docker-compose.yml   runs the web container, mounts digest/ into it
 ├── seen.json            dedup state (gitignored)
 ├── fetch.log            fetch.py run log (gitignored)
 └── cron.log             crontab stdout/stderr capture (gitignored)
@@ -67,17 +70,63 @@ python3 scripts/fetch.py
 
 The script is tolerant — a single bad source logs `FAIL` and the others continue.
 
+## Portal (`web/`)
+
+A Next.js 14 dashboard that consumes `digest/<date>.json` and renders today's
+synthesis behind GitHub OAuth. Live AI features (translate to Chinese, deeper
+"AI explain" per item) call **Azure AI Foundry** — content production stays
+with Claude (the agent); the live web bits use Foundry.
+
+### Pages
+
+- `/` — latest day's synthesis with EN ↔ 中文 toggle
+- `/d/<date>` — historical day, prev/next links
+- `/archive` — all digests, filterable by tag
+
+### Bring it up
+
+```bash
+# 1. Fill in env (project root)
+cp .env.example .env
+# AUTH_SECRET=$(openssl rand -base64 32)
+# AUTH_GITHUB_ID, AUTH_GITHUB_SECRET — from a GitHub OAuth App with
+#   callback URL https://<your-host>/feed/api/auth/callback/github
+#   (you can extend the existing ai-playground OAuth App with another callback URL)
+# AZURE_AI_BASE_URL=https://<resource>.services.ai.azure.com/models
+# AZURE_AI_API_KEY=<your-key>
+# AZURE_AI_MODEL=gpt-4o-mini   # or any chat model deployed in your Foundry project
+
+# 2. Build + run
+docker compose build
+docker compose up -d
+
+# 3. Wire nginx (host)
+sudo cp nginx/ai-feed.conf /etc/nginx/snippets/ai-feed.conf
+# Edit /etc/nginx/sites-available/<your-personal-site>.conf and add:
+#   include snippets/ai-feed.conf;
+# inside the server block, alongside the existing vpn-monitor / ai-playground includes.
+sudo nginx -t && sudo systemctl reload nginx
+
+# 4. Smoke
+curl -I https://<your-host>/feed/login   # → 200
+```
+
+### JSON contract
+
+`digest/<date>.json` is the contract between the agent and the portal.
+Schema lives in `web/src/types/digest.ts` (zod-validated on read).
+Don't add fields without updating both sides.
+
 ## What's not here yet
 
-- **Web view.** No frontend — read the markdown directly. Could later add a
-  Next.js page (basePath `/feed`) under the same nginx + GitHub OAuth pattern
-  as `ai-playground` and `vpn-monitor`.
 - **Sources without RSS.** Anthropic, Meta AI, Mistral don't publish RSS.
-  These get covered indirectly by Smol AI News and HN. Direct scraping
-  is intentionally deferred — not worth the maintenance cost yet.
-- **Cross-day memory.** Agent only sees today's feeds, not yesterday's.
-  Could pass last-N-days digests in the prompt for week-over-week context;
-  not yet worth the token cost.
+  Covered indirectly by Smol AI News and HN. Direct scraping is intentionally
+  deferred — not worth the maintenance cost yet.
+- **Cross-day memory.** Agent only sees today's feeds. Passing last-N-days
+  digests in the prompt for week-over-week context isn't worth the tokens yet.
+- **Translation cache invalidation.** A second-run-of-the-day adds new
+  developments; the cached `<date>.zh.json` doesn't auto-refresh. To force
+  re-translate, delete the file and click 中文 again.
 
 ## Notes / quirks
 
