@@ -1,29 +1,30 @@
-# ai-feed 源列表
-# 格式: 名称 | RSS URL
-# 以 # 开头是注释
+# ai-feed sources
+# Format: Name | URL
+# Lines starting with # are ignored.
 
-# --- 一手实验室 ---
+# --- Frontier labs ---
 OpenAI | https://openai.com/news/rss.xml
 Google DeepMind | https://deepmind.google/blog/rss.xml
 Microsoft Research | https://www.microsoft.com/en-us/research/feed/
 
-# --- 编辑性 newsletter / blog ---
+# --- Editorial blogs / newsletters ---
 Interconnects (Nathan Lambert) | https://www.interconnects.ai/feed
 Smol AI News | https://buttondown.com/ainews/rss
 Simon Willison | https://simonwillison.net/atom/everything/
 Latent Space | https://www.latent.space/feed
 Ahead of AI (Sebastian Raschka) | https://magazine.sebastianraschka.com/feed
 
-# --- 论文 / 趋势 ---
-# HF Daily Papers: 社区按 upvotes 投票，每天 top 50；脚本特殊处理只取前 5
+# --- Papers / trends ---
+# HF Daily Papers: community-curated, sorted by upvotes; the fetcher special-cases
+# this URL to take only the top 5 by upvote count.
 HuggingFace Daily Papers | https://huggingface.co/api/daily_papers
 
-# --- 社区信号 ---
+# --- Community signal ---
 HN AI search | https://hnrss.org/newest?q=GPT+OR+Claude+OR+LLM+OR+AI&count=20
 
-# --- 待解决 (无公开 RSS / 反爬) ---
-# Anthropic         — 官方无公开 RSS
-# Meta AI           — 官方无公开 RSS
-# Mistral           — 官方无公开 RSS
-# The Batch         — feed 路径未知
-# Import AI         — Substack 反爬 403
+# --- Skipped: no public RSS / aggressive bot blocking ---
+# Anthropic     - no public RSS feed
+# Meta AI       - no public RSS feed
+# Mistral       - no public RSS feed
+# The Batch     - feed path unknown
+# Import AI     - Substack returns 403 even with browser UA
