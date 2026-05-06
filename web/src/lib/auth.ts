@@ -2,6 +2,9 @@ import NextAuth from "next-auth";
 import GitHub from "next-auth/providers/github";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  // basePath must mirror Next.js basePath in next.config.js. Auth.js doesn't
+  // pick this up from Next automatically.
+  basePath: "/feed/api/auth",
   providers: [
     GitHub({
       clientId: process.env.AUTH_GITHUB_ID,
@@ -9,7 +12,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }),
   ],
   pages: {
-    signIn: "/login",
+    signIn: "/feed/login",
   },
   // Any GitHub user is allowed in — no allowlist by design.
   callbacks: {
