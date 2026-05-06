@@ -10,5 +10,5 @@ cd "$PROJECT_DIR"
 
 exec "$CLAUDE_BIN" -p "$(cat agent-task.md)" \
   --dangerously-skip-permissions \
-  --max-budget-usd 1 \
+  --max-budget-usd 2 \
   --add-dir "$PROJECT_DIR"

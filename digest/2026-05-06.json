@@ -86,10 +86,129 @@
         }
       ],
       "skipped_summary": "Skipped: the long tail of Codex academy and documentation pages, every customer-success post (Choco, Hyatt, PwC, Shopify), ChatGPT Ads Manager (an ad product, not an AI story), the Apple Siri settlement (legal cleanup), most new arXiv submissions (sentiment analysis, Indic ASR, autism agents — fine work, not frontier-shifting), and the long tail of HN show-HN agent vaults. The Chrome-downloads-4GB-AI-file story is interesting but unverified."
+    },
+    {
+      "run_at": "2026-05-06T19:26:00+08:00",
+      "headline": "Two hours after run 1, the cadence confirms itself: OpenAI ships enterprise plumbing — Agents SDK runtime, Cloudflare distribution, a cyber-tier model — while the financial press starts pricing AI as a debt story rather than a capability one.",
+      "developments": [
+        {
+          "id": "openai-agents-sdk-native-sandbox",
+          "title": "OpenAI Agents SDK adds native sandbox execution and a model-native harness",
+          "take": "The next evolution of the Agents SDK folds the runtime into the SDK itself — sandboxed tool calls, a harness the models were trained against, long-running file/tool state. This is the SDK becoming the substrate. Combined with the Symphony orchestration spec from earlier today, the pattern is clear: OpenAI is locking down the agent execution layer, not just the model API.",
+          "links": [
+            { "label": "OpenAI announcement", "url": "https://openai.com/index/the-next-evolution-of-the-agents-sdk" },
+            { "label": "Symphony spec", "url": "https://openai.com/index/open-source-codex-orchestration-symphony" }
+          ],
+          "tags": ["agent", "vendor:openai", "sdk", "infrastructure"]
+        },
+        {
+          "id": "gpt-5-4-cyber-trusted-access",
+          "title": "GPT-5.4-Cyber gated behind Trusted Access for Cyber defenders",
+          "take": "OpenAI expanded the Trusted Access for Cyber program and dropped GPT-5.4-Cyber inside it — vetted defenders only. Tiered model access for safety-sensitive domains (cyber, bio) is becoming the real product surface for advanced capabilities, not the public API. Capability disclosures will increasingly happen inside customer programs, not press releases.",
+          "links": [
+            { "label": "Trusted Access announcement", "url": "https://openai.com/index/scaling-trusted-access-for-cyber-defense" }
+          ],
+          "tags": ["safety", "vendor:openai", "cyber", "policy"]
+        },
+        {
+          "id": "cloudflare-openai-agent-cloud",
+          "title": "Cloudflare brings OpenAI's GPT-5.4 and Codex to Agent Cloud",
+          "take": "Cloudflare's pitch: the agent runtime sits at the edge, not at OpenAI's datacenter. Pair this with OpenAI's AWS landing earlier today and OpenAI is no longer demanding traffic come to it — the model goes wherever the customer's compute already is. Distribution is being decoupled from the home cloud.",
+          "links": [
+            { "label": "OpenAI / Cloudflare post", "url": "https://openai.com/index/cloudflare-openai-agent-cloud" },
+            { "label": "OpenAI on AWS", "url": "https://openai.com/index/openai-on-aws" }
+          ],
+          "tags": ["agent", "vendor:openai", "vendor:cloudflare", "infrastructure", "distribution"]
+        },
+        {
+          "id": "ai-debt-invesco-capex",
+          "title": "Invesco: 'Big Tech needs every dollar it can get in AI debt'",
+          "take": "The cleanest external framing of run 1's compute-deal theme. Bloomberg's piece, surfaced via HN, treats AI infrastructure as a capex/debt story. Anthropic↔xAI, Stargate, MRC — institutional investors aren't underwriting capabilities, they're underwriting the buildout. The competitive frontier is balance-sheet capacity, not benchmarks.",
+          "links": [
+            { "label": "Bloomberg / Invesco", "url": "https://www.bloomberg.com/news/articles/2026-05-06/invesco-says-big-tech-needs-every-dollar-it-can-get-in-ai-debt" }
+          ],
+          "tags": ["compute", "infrastructure", "industry", "finance"]
+        }
+      ],
+      "themes": [
+        {
+          "title": "The product is the runtime, not the model",
+          "body": "Agents SDK with native sandboxing, Symphony orchestration, GPT-5.4-Cyber gated through Trusted Access, Cloudflare Agent Cloud — none of these are model news, all of them are substrate news. Every shipping announcement from OpenAI today is about controlling where and how agents execute, which is exactly where the recurring revenue lives."
+        },
+        {
+          "title": "Capex, not capabilities",
+          "body": "Anthropic↔xAI in run 1, Invesco's debt comment in run 2, Stargate and MRC running parallel. Across editorial sources, the AI story is being re-framed as an infrastructure financing story. Expect more bond issuances and compute swaps before more leaderboard wins."
+        }
+      ],
+      "worth_reading": [
+        {
+          "label": "OpenAI Agents SDK — next evolution",
+          "url": "https://openai.com/index/the-next-evolution-of-the-agents-sdk",
+          "why": "Substrate-layer change disguised as a feature drop — read for the architecture, not the marketing copy."
+        },
+        {
+          "label": "Invesco on AI debt (Bloomberg)",
+          "url": "https://www.bloomberg.com/news/articles/2026-05-06/invesco-says-big-tech-needs-every-dollar-it-can-get-in-ai-debt",
+          "why": "The cleanest external framing of where AI margins are actually flowing — it's the balance sheet, not the leaderboard."
+        },
+        {
+          "label": "PhysicianBench",
+          "url": "https://huggingface.co/papers/2605.02240",
+          "why": "Agent evaluation grounded in real EHR data instead of synthetic clinical scaffolding — the harder kind of benchmark."
+        }
+      ],
+      "skipped_summary": "DeepMind's blog backfill of October/November 2025 posts (WeatherNext 2, SIMA 2, MedGemma, T5Gemma, AI-for-Math) appeared in the feed but isn't fresh news. Eight more OpenAI Academy pages (Financial Services, Sales, Customer Success, Image Generation) — pure docs. HN noise: AI video clippers, agent logging proxies, the inevitable 'exclude AI from Show HN' meta thread, an 'AI Architecture Governance for Governments' landing page. ZDNet's recap of Anthropic 'dreaming' is the same story already covered in run 1."
+    },
+    {
+      "run_at": "2026-05-06T19:30:00+08:00",
+      "headline": "A thin third run: Amazon's Andy Jassy joins the AI-capex justification tour, and the day's real news is already in runs 1 and 2.",
+      "developments": [
+        {
+          "id": "amazon-jassy-ai-capex-defense",
+          "title": "Andy Jassy publicly defends Amazon's AI capex to investors",
+          "take": "CNBC, surfaced via HN: Jassy is now telling shareholders the AI buildout will pay back. Same beat as Invesco from run 2, but this time it's a CEO making the pitch instead of an asset manager. Amazon joining Anthropic, OpenAI and Microsoft in the 'trust us, the spend is rational' chorus is the tell — every hyperscaler now needs an investor-relations narrative for AI capex, because the numbers no longer fit a normal margin model.",
+          "links": [
+            { "label": "CNBC", "url": "https://www.cnbc.com/2026/05/04/andy-jassy-amazon-investors-rewarded-ai-spending.html" }
+          ],
+          "tags": ["compute", "infrastructure", "industry", "finance", "vendor:amazon"]
+        },
+        {
+          "id": "rl-orchestration-traces-paper",
+          "title": "RL for LLM-based Multi-Agent Systems through Orchestration Traces",
+          "take": "HuggingFace paper that lands directly on top of today's Symphony / Agents SDK news: instead of optimizing individual agent actions, train RL policies over the spawn/delegate/communicate/aggregate/stop graph. This is the academic version of what OpenAI shipped commercially this morning — the orchestration trace, not the token, is the unit of optimization. Worth reading as the first credible attempt to formalize what a 'good' agentic loop looks like.",
+          "links": [
+            { "label": "Paper", "url": "https://huggingface.co/papers/2605.02801" }
+          ],
+          "tags": ["paper", "agent", "orchestration", "reinforcement-learning", "evaluation"]
+        },
+        {
+          "id": "grand-challenge-reliable-coding-agents",
+          "title": "A Grand Challenge for Reliable Coding in the Age of AI Agents",
+          "take": "arXiv perspective piece, low HN signal so far, but the framing is correct: the Codex/Claude Code shipping cadence is dramatically outpacing any rigorous notion of correctness for AI-written code. Worth flagging as the counter-narrative to today's runtime/SDK marketing — the substrate is consolidating faster than the safety story.",
+          "links": [
+            { "label": "arXiv", "url": "https://arxiv.org/abs/2603.17150" }
+          ],
+          "tags": ["paper", "agent", "evaluation", "safety", "coding"]
+        }
+      ],
+      "themes": [
+        {
+          "title": "AI capex now needs an investor narrative",
+          "body": "Invesco in run 2, Jassy in run 3. Two days in a row, the public framing of AI is shifting from product to balance sheet. CFOs and CEOs are now expected to justify AI spend the way they once justified data-center buildouts — and the rebuttals are starting to lag the spend."
+        }
+      ],
+      "worth_reading": [
+        {
+          "label": "RL through Orchestration Traces",
+          "url": "https://huggingface.co/papers/2605.02801",
+          "why": "The right object for RL on agents is the orchestration trace, not individual tool calls. First clean academic statement of what OpenAI shipped commercially today."
+        }
+      ],
+      "skipped_summary": "Eight more OpenAI Academy / docs pages (ChatGPT for finance, managers, research, custom GPTs, files, skills, personalization) — already dismissed in run 2. Eight DeepMind blog backfill items from October 2025 (Gemma 3n, Gemini 2.5 Flash-Lite GA, Genie 3, AlphaEarth, Aeneas, IMO gold) — same backfill noted in run 2, not fresh. HN low-signal: Airbyte agents data-cleaning launch, a Politico piece on Democrats' AI affordability messaging, a substack post on 'core vs non-core work,' SymptomAI on HuggingFace (decent paper, but PhysicianBench from run 2 is the better evaluation story), SVGS / Soft Anisotropic Diagrams / Hierarchical Abstract Tree (graphics and RAG papers, not frontier-shifting)."
     }
   ],
   "stats": {
-    "raw_items": 28,
+    "raw_items": 27,
     "sources_ok": 10,
     "sources_failed": []
   }

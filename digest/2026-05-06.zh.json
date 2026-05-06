@@ -4,152 +4,211 @@
   "runs": [
     {
       "run_at": "2026-05-06T18:00:00+08:00",
-      "headline": "Anthropic 正在从 xAI 和 SpaceX 购买计算资源 —— 三家最响亮地竞争 AGI 的公司现在公开交易彼此无法单独快速构建的基础设施。",
+      "headline": "Anthropic 开始向 xAI 和 SpaceX 买算力——三家口口声声争 AGI 的公司，已经在公开互相租基础设施，因为没人能独自把 fabric 堆够。",
       "developments": [
         {
           "id": "anthropic-xai-spacex-compute-deal",
-          "title": "Anthropic 从 xAI 和 SpaceX 购买计算资源",
-          "take": "一年前，'Anthropic 从制作 Grok 的公司租用 GPU' 这句话听起来像是一个笑话。现在，它成为了双方的官方新闻稿。计算资源已经与意识形态脱钩 —— 前沿实验室是出租彼此基础设施的房东，这是 2026 年迄今为止最具经济启示性的 AI 故事。",
+          "title": "Anthropic 从 xAI 和 SpaceX 买算力",
+          "take": "一年前，\"Anthropic 向做 Grok 的公司租 GPU\" 听上去像段子，现在是双方一起发的官方公告。算力已经和意识形态脱钩——前沿实验室沦为彼此 fabric 的房东，这是 2026 年到目前为止最能说明经济结构的 AI 故事。",
           "links": [
-            {
-              "label": "Anthropic announcement",
-              "url": "https://www.anthropic.com/news/higher-limits-spacex"
-            },
-            {
-              "label": "xAI announcement",
-              "url": "https://x.ai/news/anthropic-compute-partnership"
-            }
+            { "label": "Anthropic 公告", "url": "https://www.anthropic.com/news/higher-limits-spacex" },
+            { "label": "xAI 公告", "url": "https://x.ai/news/anthropic-compute-partnership" }
           ],
-          "tags": [
-            "compute",
-            "infrastructure",
-            "vendor:anthropic",
-            "vendor:xai",
-            "industry"
-          ]
+          "tags": ["compute", "infrastructure", "vendor:anthropic", "vendor:xai", "industry"]
         },
         {
           "id": "openai-mrc-rdma-protocol",
-          "title": "OpenAI 通过 OCP 发布自定义 RDMA 传输 MRC",
-          "take": "MRC（多路径可靠连接）是 OpenAI 为大规模训练设计的网络协议，已贡献给 Open Compute Project。STH 确认它是 Spectrum-X 自定义传输 —— 这意味着 OpenAI 与 Nvidia 共同设计了旗舰 AI 基础设施的线协议。结合 Stargate 扩展，OpenAI 正日益将自己定位为一个网络和数据中心公司，它碰巧也提供模型。",
+          "title": "OpenAI 通过 OCP 公开 MRC——一种自研 RDMA 传输协议",
+          "take": "MRC（Multipath Reliable Connection）是 OpenAI 为千卡级训练自研的网络协议，捐给了 Open Compute Project。STH 已经确认这就是 Spectrum-X 的 custom transport——也就是说 OpenAI 跟 NVIDIA 一起 co-design 了旗舰 AI fabric 的线协议。再叠加 Stargate 扩容，OpenAI 越来越像一家顺便发模型的网络/数据中心公司。",
           "links": [
-            {
-              "label": "OpenAI MRC post",
-              "url": "https://openai.com/index/mrc-supercomputer-networking"
-            },
-            {
-              "label": "STH technical breakdown",
-              "url": "https://www.servethehome.com/nvidia-spectrum-x-mrc-is-the-custom-rdma-transport-protocol-for-gigascale-ai/"
-            },
-            {
-              "label": "Stargate expansion",
-              "url": "https://openai.com/index/building-the-compute-infrastructure-for-the-intelligence-age"
-            }
+            { "label": "OpenAI MRC 文章", "url": "https://openai.com/index/mrc-supercomputer-networking" },
+            { "label": "STH 技术解读", "url": "https://www.servethehome.com/nvidia-spectrum-x-mrc-is-the-custom-rdma-transport-protocol-for-gigascale-ai/" },
+            { "label": "Stargate 扩容", "url": "https://openai.com/index/building-the-compute-infrastructure-for-the-intelligence-age" }
           ],
-          "tags": [
-            "compute",
-            "infrastructure",
-            "networking",
-            "vendor:openai",
-            "vendor:nvidia"
-          ]
+          "tags": ["compute", "infrastructure", "networking", "vendor:openai", "vendor:nvidia"]
         },
         {
           "id": "gpt-5-5-instant-default",
-          "title": "GPT-5.5 Instant 作为新的 ChatGPT 默认值发布",
-          "take": "该模型本身是一个常规的点升级。这个故事的重点是发布节奏：四月份的 GPT-5.5，两周后发布的 GPT-5.5 Instant，以及平行的生物 bug 赏金。前沿模型的发布已经不再是事件，而成为了一种滴灌；新闻不再是基准测试，而是部署的摩擦。",
+          "title": "GPT-5.5 Instant 上线，成为 ChatGPT 新默认模型",
+          "take": "模型本身就是一次常规的小版本升级，真正值得说的是节奏：4 月发 GPT-5.5，两周后 GPT-5.5 Instant，同期还在跑 bio bug bounty。前沿模型发布已经从事件变成持续滴灌——新闻不再是 benchmark，而是部署摩擦。",
           "links": [
-            {
-              "label": "Launch post",
-              "url": "https://openai.com/index/gpt-5-5-instant"
-            },
-            {
-              "label": "System card",
-              "url": "https://openai.com/index/gpt-5-5-instant-system-card"
-            }
+            { "label": "发布文", "url": "https://openai.com/index/gpt-5-5-instant" },
+            { "label": "System card", "url": "https://openai.com/index/gpt-5-5-instant-system-card" }
           ],
-          "tags": [
-            "llm",
-            "vendor:openai",
-            "model-release"
-          ]
+          "tags": ["llm", "vendor:openai", "model-release"]
         },
         {
           "id": "claude-managed-agents-dreaming",
-          "title": "Code w/ Claude 2026：Managed Agents 添加 '梦境' 和多代理编排",
-          "take": "Anthropic 的开发者活动引入了离线内存整合（'梦境'），显式结果和多代理协调，用于 Claude Managed Agents。去掉营销话术 —— '梦境' 是会话之间的重放/整合，一旦代理积累了足够的状态就需要垃圾回收的明显下一步。有用的原语，而不是营销框架所暗示的哲学飞跃。",
+          "title": "Code w/ Claude 2026：Managed Agents 加入 \"dreaming\" 与多 agent 编排",
+          "take": "Anthropic 的开发者大会给 Claude Managed Agents 引入了离线记忆整合（\"dreaming\"）、显式 outcomes、多 agent 协作。撕掉营销话术——\"dreaming\" 就是 session 之间的 replay/consolidation，是 agent 状态多到必须做 GC 之后的必然下一步。是个有用的 primitive，不是宣传里那种哲学跃迁。",
           "links": [
-            {
-              "label": "Anthropic announcement",
-              "url": "https://claude.com/blog/new-in-claude-managed-agents"
-            },
-            {
-              "label": "Ars Technica",
-              "url": "https://arstechnica.com/ai/2026/05/anthropics-claude-can-now-dream-sort-of/"
-            },
-            {
-              "label": "Simon Willison live blog",
-              "url": "https://simonwillison.net/2026/May/6/code-w-claude-2026/"
-            }
+            { "label": "Anthropic 公告", "url": "https://claude.com/blog/new-in-claude-managed-agents" },
+            { "label": "Ars Technica", "url": "https://arstechnica.com/ai/2026/05/anthropics-claude-can-now-dream-sort-of/" },
+            { "label": "Simon Willison 现场博客", "url": "https://simonwillison.net/2026/May/6/code-w-claude-2026/" }
           ],
-          "tags": [
-            "agent",
-            "vendor:anthropic",
-            "memory",
-            "orchestration"
-          ]
+          "tags": ["agent", "vendor:anthropic", "memory", "orchestration"]
         },
         {
           "id": "vibe-physics-gpt-5-quantum-gravity",
-          "title": "GPT-5.x 与 Alex Lupsasca 合作在理论物理学中取得新成果",
-          "take": "Lupsasca 介绍了 GPT-5.x 如何在理论物理学和量子引力中产生新结果。这个说法很重要，但方法论很重要：'模型发现' 的研究仍然依赖于每一步的人类验证。即使有这个警告，这是迄今为止最强有力的具体数据点，证明前沿模型可以为研究级理论做出贡献，并且比另一个代理基准测试更有实质性。",
+          "title": "Alex Lupsasca：GPT-5.x 在理论物理上得出新结果",
+          "take": "Lupsasca 详细讲了 GPT-5.x 如何在理论物理和量子引力方向产出新结果。结论值得认真对待，但方法论同样关键：所谓 \"模型发现\" 的研究，每一步仍然依赖人类验证。即便如此，这是迄今最硬的一个数据点，说明前沿模型可以参与到 research-grade 的理论工作里——比再多一个 agent benchmark 实在得多。",
           "links": [
-            {
-              "label": "Latent Space episode",
-              "url": "https://www.latent.space/p/lupsasca"
-            }
+            { "label": "Latent Space 节目", "url": "https://www.latent.space/p/lupsasca" }
           ],
-          "tags": [
-            "paper",
-            "vendor:openai",
-            "science",
-            "reasoning",
-            "llm"
-          ]
+          "tags": ["paper", "vendor:openai", "science", "reasoning", "llm"]
         }
       ],
       "themes": [
         {
-          "title": "计算资源是护城河 —— 而且它是租来的",
-          "body": "Anthropic↔xAI，OpenAI 向 OCP 贡献 MRC，以及持续的 Stargate 扩展都指向同一个方向。模型差异化正在崩溃，但没有人拥有足够的基础设施。预计在它们不再成为新闻之前，会有更多的跨竞争对手计算资源交换。"
+          "title": "算力 = 护城河——而且是租来的护城河",
+          "body": "Anthropic↔xAI、OpenAI 把 MRC 捐给 OCP、Stargate 持续扩容，全都指向同一件事：模型差异在收敛，但谁都没攒够 fabric。在跨阵营互租算力变得不再是新闻之前，类似交易还会继续出现。"
         },
         {
-          "title": "代理是部署表面，而不是聊天",
-          "body": "ChatGPT 工作空间代理，Codex 的 Symphony 编排规范，Claude Managed Agents 的梦境，以及 HuggingFace 的顶级趋势 OpenSeeker-v2 论文都将代理循环视为产品的单位。2024 年的聊天隐喻正在被各个供应商实时退役。"
+          "title": "Agent 才是产品的承载形态，不再是 chat",
+          "body": "ChatGPT workspace agents、Codex 的 Symphony 编排规范、Claude Managed Agents + dreaming，加上 HuggingFace 当日热度最高的 OpenSeeker-v2 论文——所有人都把 agent 循环当作产品单元。把 AI 当聊天工具的 2024 年范式，正在被各家同时放弃。"
         }
       ],
       "worth_reading": [
         {
-          "label": "Anthropic ↔ xAI/SpaceX 计算合作伙伴关系",
+          "label": "Anthropic ↔ xAI/SpaceX 算力合作",
           "url": "https://www.anthropic.com/news/higher-limits-spacex",
-          "why": "今年最具启示性的行业故事隐藏在一个使用限制新闻稿中。"
+          "why": "今年最能说明行业结构的故事，藏在一份关于 usage limit 的新闻稿里。"
         },
         {
-          "label": "Vibe Physics 与 Alex Lupsasca",
+          "label": "Vibe Physics with Alex Lupsasca",
           "url": "https://www.latent.space/p/lupsasca",
-          "why": "本周最有实质性的 'AI 做科学' 声称，具有实际的方法论演示，而不是新闻稿。"
+          "why": "本周 \"AI 做科研\" 这一类说法里最实在的一个，且有真正的方法论拆解，不是新闻稿。"
         },
         {
-          "label": "MolmoAct2 —— 开源 VLA，针对现实世界的机器人",
+          "label": "MolmoAct2——面向真实机器人的开源 VLA",
           "url": "https://huggingface.co/papers/2605.02881",
-          "why": "今日 HuggingFace 的顶级论文（195 个赞同票）；针对廉价硬件的开源 VLA 表明，机器人领域的开源与闭源之间的差距可能是可以防御的。"
+          "why": "今天 HuggingFace 热度第一（195 赞）；面向廉价硬件的 open-weight VLA，意味着机器人方向的开源 vs 闭源差距可能可以守得住。"
         }
       ],
-      "skipped_summary": "跳过：Codex 学院和文档页面的长尾，所有客户成功帖子（Choco，Hyatt，PwC，Shopify），ChatGPT Ads Manager（广告产品，而不是 AI 故事），Apple Siri 和解（法律清理），大多数新 arXiv 提交（情感分析，Indic ASR，自闭症代理 —— 良好的工作，但不是开创性的），以及 HN show-HN 代理库的长尾。Chrome 下载 4GB AI 文件的故事很有趣，但未经验证。"
+      "skipped_summary": "跳过：一长串 Codex academy / 文档页、所有客户成功案例（Choco、Hyatt、PwC、Shopify）、ChatGPT Ads Manager（这是广告产品，不是 AI 故事）、Apple Siri 的和解（法律收尾）、绝大多数新 arXiv 提交（情感分析、印度语 ASR、自闭症 agent——都是正经工作，但不动前沿）、以及 HN 上一长串 show-HN 的 agent 类项目。Chrome 偷下 4GB AI 文件那条挺有意思但没核实。"
+    },
+    {
+      "run_at": "2026-05-06T19:26:00+08:00",
+      "headline": "距 run 1 两小时，节奏已经自证：OpenAI 在出企业基础设施——Agents SDK runtime、Cloudflare 分发、cyber 等级模型——而财经媒体开始把 AI 当债务故事而非能力故事来定价。",
+      "developments": [
+        {
+          "id": "openai-agents-sdk-native-sandbox",
+          "title": "OpenAI Agents SDK 加入原生沙箱执行和 model-native harness",
+          "take": "Agents SDK 的下一代版本把 runtime 收进了 SDK 本身——沙箱化的 tool call、模型训练时所用的 harness、长期持有的文件/工具状态。这是 SDK 直接成为 substrate。和今天早些时候的 Symphony 编排规范放在一起看，意图非常清楚：OpenAI 锁的不是 model API，而是 agent 执行层。",
+          "links": [
+            { "label": "OpenAI 公告", "url": "https://openai.com/index/the-next-evolution-of-the-agents-sdk" },
+            { "label": "Symphony 规范", "url": "https://openai.com/index/open-source-codex-orchestration-symphony" }
+          ],
+          "tags": ["agent", "vendor:openai", "sdk", "infrastructure"]
+        },
+        {
+          "id": "gpt-5-4-cyber-trusted-access",
+          "title": "GPT-5.4-Cyber 仅向 Trusted Access for Cyber 项目内的防御方开放",
+          "take": "OpenAI 扩大了 Trusted Access for Cyber 项目，并把 GPT-5.4-Cyber 放在里面，仅审核过的防御方可用。安全敏感领域（cyber、bio）的分级模型访问，正在成为高级能力真正的产品出口，而不是 public API。意味着今后能力披露会越来越多发生在客户项目里，而不是发布会。",
+          "links": [
+            { "label": "Trusted Access 公告", "url": "https://openai.com/index/scaling-trusted-access-for-cyber-defense" }
+          ],
+          "tags": ["safety", "vendor:openai", "cyber", "policy"]
+        },
+        {
+          "id": "cloudflare-openai-agent-cloud",
+          "title": "Cloudflare 把 OpenAI 的 GPT-5.4 和 Codex 接入 Agent Cloud",
+          "take": "Cloudflare 的卖点：agent runtime 在 edge 跑，不在 OpenAI 的数据中心。结合今早 OpenAI 上 AWS，OpenAI 不再要求流量走自己——模型直接落到客户已有算力的地方。分发已经和大本营云解耦。",
+          "links": [
+            { "label": "OpenAI / Cloudflare 公告", "url": "https://openai.com/index/cloudflare-openai-agent-cloud" },
+            { "label": "OpenAI on AWS", "url": "https://openai.com/index/openai-on-aws" }
+          ],
+          "tags": ["agent", "vendor:openai", "vendor:cloudflare", "infrastructure", "distribution"]
+        },
+        {
+          "id": "ai-debt-invesco-capex",
+          "title": "Invesco：\"大厂为 AI 借的每一块钱都需要\"",
+          "take": "对 run 1 那条算力交易主题最干净的外部表述。这条 Bloomberg 由 HN 推上来，把 AI 基础设施定性为 capex / 债务故事。Anthropic↔xAI、Stargate、MRC——机构投资者押的不是能力，是 buildout。竞争前线是资产负债表的承载力，不是 benchmark。",
+          "links": [
+            { "label": "Bloomberg / Invesco", "url": "https://www.bloomberg.com/news/articles/2026-05-06/invesco-says-big-tech-needs-every-dollar-it-can-get-in-ai-debt" }
+          ],
+          "tags": ["compute", "infrastructure", "industry", "finance"]
+        }
+      ],
+      "themes": [
+        {
+          "title": "产品是 runtime，不是 model",
+          "body": "原生沙箱的 Agents SDK、Symphony 编排、走 Trusted Access 的 GPT-5.4-Cyber、Cloudflare Agent Cloud——没有一条是 model 新闻，全都是 substrate 新闻。OpenAI 今天每一条出货公告都是在控制 agent 执行的位置和方式，而那正是后续收入真正发生的地方。"
+        },
+        {
+          "title": "比的是 capex，不是能力",
+          "body": "run 1 的 Anthropic↔xAI、run 2 的 Invesco 评论、再加并行的 Stargate 与 MRC——多个编辑视角都在把 AI 故事重新框成基础设施融资故事。在下一波 leaderboard 胜利出现之前，会先看到更多债券发行和算力互换。"
+        }
+      ],
+      "worth_reading": [
+        {
+          "label": "OpenAI Agents SDK——下一代",
+          "url": "https://openai.com/index/the-next-evolution-of-the-agents-sdk",
+          "why": "披着 feature drop 外皮的 substrate 层变动——看架构，不看营销文案。"
+        },
+        {
+          "label": "Invesco 谈 AI 债务（Bloomberg）",
+          "url": "https://www.bloomberg.com/news/articles/2026-05-06/invesco-says-big-tech-needs-every-dollar-it-can-get-in-ai-debt",
+          "why": "对 AI 利润流向最干净的外部框定——钱在资产负债表上跑，不在排行榜上。"
+        },
+        {
+          "label": "PhysicianBench",
+          "url": "https://huggingface.co/papers/2605.02240",
+          "why": "用真实 EHR 数据做 agent 评测，而不是合成临床场景——更难、更值得做的那种 benchmark。"
+        }
+      ],
+      "skipped_summary": "DeepMind 的 blog 把 2025 年 10/11 月的旧帖（WeatherNext 2、SIMA 2、MedGemma、T5Gemma、AI-for-Math）补到了 feed 里，不是新内容。又来了 8 个 OpenAI Academy 页面（金融服务、销售、客户成功、图像生成）——纯文档。HN 噪音：AI 视频剪辑、agent 日志代理、必然出现的 \"把 AI 从 Show HN 里排除\" 元贴、一个 \"政府 AI 架构治理\" 落地页。ZDNet 关于 Anthropic \"dreaming\" 的复述就是 run 1 已经讲过的同一件事。"
+    },
+    {
+      "run_at": "2026-05-06T19:30:00+08:00",
+      "headline": "稀薄的第三跑：Amazon 的 Andy Jassy 加入 AI capex 自辩巡演，今天真正的新闻已经在 run 1 和 run 2 里。",
+      "developments": [
+        {
+          "id": "amazon-jassy-ai-capex-defense",
+          "title": "Andy Jassy 公开向投资者为 Amazon 的 AI capex 辩护",
+          "take": "CNBC，由 HN 推上来：Jassy 现在直接告诉股东，AI buildout 会回本。和 run 2 的 Invesco 是同一个鼓点，只不过这次出来发声的是 CEO 而非资管。Amazon 加入 Anthropic、OpenAI、Microsoft 的 \"相信我们，这笔钱花得理性\" 合唱团，本身就是信号——每家 hyperscaler 现在都需要给 AI capex 准备一套投资者关系叙事，因为这堆数字已经塞不进正常 margin 模型。",
+          "links": [
+            { "label": "CNBC", "url": "https://www.cnbc.com/2026/05/04/andy-jassy-amazon-investors-rewarded-ai-spending.html" }
+          ],
+          "tags": ["compute", "infrastructure", "industry", "finance", "vendor:amazon"]
+        },
+        {
+          "id": "rl-orchestration-traces-paper",
+          "title": "RL for LLM-based Multi-Agent Systems through Orchestration Traces",
+          "take": "一篇 HuggingFace 论文，正好落在今天 Symphony / Agents SDK 这条线上：不再优化单个 agent 动作，而是把 RL 策略训在 spawn / delegate / communicate / aggregate / stop 这张图上。OpenAI 今早商业上交付的东西，这是它的学术版——优化的单元是 orchestration trace，不是 token。值得读，是关于 \"什么叫好的 agentic 循环\" 的第一次像样的形式化尝试。",
+          "links": [
+            { "label": "Paper", "url": "https://huggingface.co/papers/2605.02801" }
+          ],
+          "tags": ["paper", "agent", "orchestration", "reinforcement-learning", "evaluation"]
+        },
+        {
+          "id": "grand-challenge-reliable-coding-agents",
+          "title": "A Grand Challenge for Reliable Coding in the Age of AI Agents",
+          "take": "arXiv 上一篇视角文章，HN 信号还没起来，但定调对：Codex / Claude Code 的出货节奏已经远远跑在任何严肃的 \"AI 写出来的代码到底对不对\" 概念之前。值得标出来，作为今天 runtime / SDK 营销叙事的反面——substrate 收敛的速度远快于安全叙事。",
+          "links": [
+            { "label": "arXiv", "url": "https://arxiv.org/abs/2603.17150" }
+          ],
+          "tags": ["paper", "agent", "evaluation", "safety", "coding"]
+        }
+      ],
+      "themes": [
+        {
+          "title": "AI capex 现在需要一套投资者叙事",
+          "body": "run 2 的 Invesco、run 3 的 Jassy。两天连着，AI 的公开框架正在从产品转到资产负债表。CFO 和 CEO 现在被要求像当年解释数据中心 buildout 那样去解释 AI 支出——而反驳方的论据明显跟不上花钱的速度。"
+        }
+      ],
+      "worth_reading": [
+        {
+          "label": "RL through Orchestration Traces",
+          "url": "https://huggingface.co/papers/2605.02801",
+          "why": "在 agent 上做 RL，正确的对象是 orchestration trace，不是单次 tool call。OpenAI 今天商业落地的东西，这是它第一份像样的学术陈述。"
+        }
+      ],
+      "skipped_summary": "又来了 8 个 OpenAI Academy / 文档页（ChatGPT 用于金融、管理、研究、custom GPTs、文件、skills、个性化）——run 2 已经否过。8 条 DeepMind 的 2025 年 10 月 blog 回填（Gemma 3n、Gemini 2.5 Flash-Lite GA、Genie 3、AlphaEarth、Aeneas、IMO 金牌）——同样是 run 2 已经标过的回填，不是新内容。HN 低信号：Airbyte agents 数据清洗发布、一篇 Politico 谈民主党 AI affordability 话术、一篇 substack 写 \"core vs non-core work\"、HuggingFace 上的 SymptomAI（论文还行，但 run 2 的 PhysicianBench 是更好的评测故事）、SVGS / Soft Anisotropic Diagrams / Hierarchical Abstract Tree（图形和 RAG 论文，不动前沿）。"
     }
   ],
   "stats": {
-    "raw_items": 28,
+    "raw_items": 27,
     "sources_ok": 10,
     "sources_failed": []
   }

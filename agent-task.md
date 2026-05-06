@@ -69,21 +69,64 @@ The portal consumes this. Treat the schema as a contract; do not improvise field
 
 Produce `digest/$(date +%F).zh.json` by translating the user-facing strings of
 the English JSON to simplified Chinese while preserving all structural fields
-verbatim. Specifically:
+verbatim. You are doing the translation yourself; don't call any external API.
+
+### Which fields
 
 - **Translate**: `headline`, `developments[].title`, `developments[].take`,
   `themes[].title`, `themes[].body`, `worth_reading[].label`,
   `worth_reading[].why`, `skipped_summary`.
 - **Do NOT translate**: `date`, `tz`, `run_at`, `developments[].id`,
   `developments[].tags`, `developments[].links[].url`, all `stats` fields.
-- **Keep proper nouns in English**: Anthropic, OpenAI, Claude, GPT-5.5, RDMA,
-  Spectrum-X, MolmoAct2, etc.
-- **Preserve tone**: opinionated and direct, not corporate. The Chinese reader
-  is technical; don't dumb it down.
-- The schema is identical — same shape, same key order, just different language
-  for the translatable fields. Validate it parses.
 
-You are doing the translation yourself. Don't call any external translation API.
+### How to translate — read this carefully
+
+The target reader is a **Chinese AI/tech engineer** who lives in English-heavy
+discourse and reads HuggingFace, arXiv, and Twitter all day. Translating
+*fluently for that reader* matters more than maximizing the share of Chinese
+characters. Heavy mixing of English technical terms is normal and preferred —
+forced over-translation is the failure mode.
+
+**Always keep these in English** (do not translate to Chinese):
+
+- Companies / products: Anthropic, OpenAI, Claude, ChatGPT, GPT-5.5, Codex,
+  Google DeepMind, Meta, Mistral, HuggingFace, Microsoft, NVIDIA
+- Models / papers: MolmoAct2, OpenSeeker-v2, Spectrum-X, Llama, Mixtral, etc.
+- Core ML/infra acronyms: LLM, RLHF, RAG, MoE, RDMA, SFT, VLA, GPU, OCP
+- Concept terms preferred in English by the Chinese tech community:
+  **agent, agentic, prompt, fine-tune, embedding, token, context window,
+  benchmark, alignment, scaling law, distillation, inference, training run**
+
+**Never translate these literally** — render the meaning instead:
+
+| English | Bad (literal) | Good |
+|---|---|---|
+| Agents are the deployment surface | 代理是部署表面 | Agent 才是产品的承载形态 |
+| agent loop / agentic loop | 代理循环 | agent 循环 / agentic 循环 |
+| Claude's "dreaming" | Claude 的梦境 | Claude 的 "dreaming"（离线记忆整合） |
+| retired in real time | 实时退役 | 各家正在加速放弃 |
+| top-trending paper | 顶级趋势论文 | 热度最高的论文 |
+| chat metaphor | 聊天隐喻 | 把 AI 当聊天工具的范式 |
+| compute is a moat | 算力是护城河 | 算力 = 护城河（OK，可保留） |
+| post-benchmark era | 后基准时代 | 后 benchmark 时代 |
+| capex, not capabilities | 资本支出，而非能力 | 比的是 capex，不是能力 |
+
+The pattern: **Chinese tech writing is a code-switching register.** Concepts
+stay in English; connective tissue, framing, and judgments are in Chinese.
+
+### Tone
+
+The English version is **opinionated and direct** — calls things hype, names
+winners and losers, dismisses categories as marketing. **Preserve all of that.**
+Don't soften "this is hype" into "可能存在过度营销". Don't soften "settling on
+something not-RoCE" into "正在向某种非 RoCE 的方向收敛"; just write "正在收敛
+到非 RoCE 的方案上". Read your output back as a Chinese tech engineer would
+write it on Twitter or in a technical blog — sharp, mixed-script, opinionated.
+
+### Validation
+
+Same shape as the English JSON, same key order, just different content for the
+translatable fields. Parse-validate before exit.
 
 ## Second run of the day
 
