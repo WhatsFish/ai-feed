@@ -1,9 +1,10 @@
 import { NextRequest } from "next/server";
 import { auth } from "@/lib/auth";
-import { foundry, FOUNDRY_MODEL } from "@/lib/foundry";
+import { chatComplete } from "@/lib/azure-ai";
 import { getDigest, getTranslation, saveTranslation } from "@/lib/digest";
 import type { Digest } from "@/types/digest";
 
+export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 /**
@@ -63,21 +64,23 @@ export async function POST(req: NextRequest) {
     "Output ONLY valid JSON, no prose, no code fences.",
   ].join(" ");
 
-  const client = foundry();
-  const resp = await client.chat.completions.create({
-    model: FOUNDRY_MODEL,
-    messages: [
-      { role: "system", content: sys },
-      { role: "user", content: inputJson },
-    ],
-    response_format: { type: "json_object" },
-    temperature: 0.2,
-  });
+  let raw: string;
+  try {
+    raw = await chatComplete({
+      messages: [
+        { role: "system", content: sys },
+        { role: "user", content: inputJson },
+      ],
+      temperature: 0.2,
+      response_format: { type: "json_object" },
+    });
+  } catch (e) {
+    return new Response(`upstream: ${e instanceof Error ? e.message : "unknown"}`, { status: 502 });
+  }
 
-  const out = resp.choices[0]?.message?.content ?? "{}";
   let translated: Record<string, string>;
   try {
-    translated = JSON.parse(out);
+    translated = JSON.parse(raw);
   } catch {
     return new Response("translator returned invalid JSON", { status: 502 });
   }

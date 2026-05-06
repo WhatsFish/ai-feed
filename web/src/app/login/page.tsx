@@ -1,7 +1,10 @@
 import { signIn } from "@/lib/auth";
 
 export default function LoginPage({ searchParams }: { searchParams: { from?: string } }) {
-  const from = searchParams?.from && searchParams.from.startsWith("/") ? searchParams.from : "/";
+  // Auth.js doesn't auto-prefix Next.js basePath when redirecting after sign-in,
+  // so we always redirect to a /feed-prefixed URL.
+  const raw = searchParams?.from;
+  const from = raw && raw.startsWith("/feed") ? raw : "/feed/";
   return (
     <div className="max-w-md mx-auto py-16">
       <h1 className="text-2xl font-semibold mb-3">Sign in</h1>
