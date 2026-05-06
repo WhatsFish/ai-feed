@@ -1,12 +1,19 @@
 # ai-feed
 
-Daily AI-frontier intelligence digest. Two layers:
+Daily AI-frontier intelligence digest. Live at **http://20.89.176.30/feed**
+(public read, GitHub sign-in only required for the live "AI explain" feature).
+
+Three layers:
 
 1. **`fetch.py`** — pulls RSS/Atom + the HuggingFace daily-papers JSON API,
    dedupes against `seen.json`, appends raw items to `feeds/<date>.md`.
 2. **`run-agent.sh`** — fires a headless Claude Code agent (`claude -p`) that
-   refreshes the raw feeds, reads them, then writes an opinionated synthesis
-   to `digest/<date>.md`. Claude is in the loop; this is the deliverable.
+   refreshes the raw feeds, reads them, and writes three files: `<date>.md`,
+   `<date>.json` (machine-readable), and `<date>.zh.json` (Chinese translation,
+   produced by Claude in the same run). Claude is in the loop; this is the deliverable.
+3. **`web/`** — Next.js 14 portal that reads the JSON files and serves the
+   digest publicly with EN/中文 toggle, plus an auth-gated "AI explain"
+   button per item that calls Azure AI Foundry for a deeper take.
 
 ## Layout
 
@@ -16,9 +23,10 @@ ai-feed/
 ├── agent-task.md        the prompt fired into headless Claude
 ├── scripts/
 │   ├── fetch.py         pure-stdlib RSS+Atom+JSON fetcher
-│   └── run-agent.sh     cron entry point — wraps `claude -p`
+│   ├── run-agent.sh     cron entry point — wraps `claude -p`
+│   └── prune.sh         daily housekeeping (90-day retention, log rotation)
 ├── feeds/               raw daily aggregations (input to the agent)
-├── digest/              agent output: <date>.md + <date>.json (+ <date>.zh.json cache)
+├── digest/              agent output: <date>.md + <date>.json + <date>.zh.json
 ├── web/                 Next.js 14 portal (App Router, NextAuth, Tailwind)
 ├── nginx/ai-feed.conf   reverse-proxy snippet for the host nginx
 ├── docker-compose.yml   runs the web container, mounts digest/ into it
@@ -32,30 +40,37 @@ ai-feed/
 Installed in user crontab on this VM:
 
 ```
-13 0,12 * * * /home/liharr/src/ai-feed/scripts/run-agent.sh >>/home/liharr/src/ai-feed/cron.log 2>&1
+13 0,12 * * * /home/liharr/src/ai-feed/scripts/run-agent.sh >>cron.log 2>&1
+23 3 * * *    /home/liharr/src/ai-feed/scripts/prune.sh    >>cron.log 2>&1
 ```
 
-08:13 and 20:13 Asia/Shanghai (VM runs in UTC). Two passes/day catches both
-overnight (US PM) and daytime (US AM) updates. Each run takes ~90s end-to-end
-(fetch ~10s, agent ~80s).
+The agent runs at **08:13 and 20:13 Asia/Shanghai** (00:13 / 12:13 UTC). Two
+passes/day catches both overnight (US PM) and daytime (US AM) updates. End
+to end takes ~2–3 minutes (fetch ~10s, then Claude reads the raw feeds,
+writes the synthesis, and produces the Chinese translation in one pass).
+
+The two cron windows define **slots**: morning (UTC hour < 12) and evening
+(UTC hour ≥ 12). A day's `runs[]` array holds at most two entries, one per
+slot. Manual reruns within a slot **merge in place** (developments unioned
+by id, prose re-synthesized over the merged set) rather than appending new
+runs. See `agent-task.md` for the full slot/merge spec.
 
 `run-agent.sh` invokes `claude -p` with `--dangerously-skip-permissions`
-(non-interactive — no human to confirm) and `--max-budget-usd 1` (hard cap
-per run). Typical observed cost: well under $0.50/run.
+(non-interactive — no human to confirm) and `--max-budget-usd 2` (hard cap
+per run). Typical observed cost is well under that.
 
 ## Reading the digest
 
-The agent's synthesis is what you actually want — short, opinionated, ranked:
+The portal at **http://20.89.176.30/feed** is the primary reader. EN ↔ 中文
+toggle in the top right. No login required.
 
-```
-vim digest/$(date +%F).md
-```
+For local / SSH:
 
-The raw aggregation is one level lower if you want to verify or look at
-something the agent skipped:
-
-```
-vim feeds/$(date +%F).md
+```bash
+vim digest/$(date +%F).md           # human prose (English)
+jq . digest/$(date +%F).json        # structured (English)
+jq . digest/$(date +%F).zh.json     # structured (Chinese)
+vim feeds/$(date +%F).md            # raw RSS aggregation, pre-synthesis
 ```
 
 ## Adding / removing sources
@@ -72,10 +87,16 @@ The script is tolerant — a single bad source logs `FAIL` and the others contin
 
 ## Portal (`web/`)
 
-A Next.js 14 dashboard that consumes `digest/<date>.json` and renders today's
-synthesis behind GitHub OAuth. Live AI features (translate to Chinese, deeper
-"AI explain" per item) call **Azure AI Foundry** — content production stays
-with Claude (the agent); the live web bits use Foundry.
+Next.js 14 + App Router + Tailwind + Auth.js v5. Reads `digest/<date>.json`
+(or `.zh.json`) directly off the host filesystem — no DB.
+
+### Access model
+
+| Surface | Access |
+|---|---|
+| `/`, `/archive`, `/d/<date>` | **Public.** Anyone can read, switch language, follow links. |
+| `/api/interpret` (live "AI explain" per item) | **GitHub sign-in required.** Calls Azure AI Foundry. |
+| Translation EN→中文 | **Pre-generated by the agent**, served as a static file. No live API. |
 
 ### Pages
 
@@ -86,36 +107,58 @@ with Claude (the agent); the live web bits use Foundry.
 ### Bring it up
 
 ```bash
-# 1. Fill in env (project root)
+# 1. Fill in env (project root). See .env.example for the full list.
 cp .env.example .env
-# AUTH_SECRET=$(openssl rand -base64 32)
-# AUTH_GITHUB_ID, AUTH_GITHUB_SECRET — from a GitHub OAuth App with
-#   callback URL https://<your-host>/feed/api/auth/callback/github
-#   (you can extend the existing ai-playground OAuth App with another callback URL)
-# AZURE_AI_BASE_URL=https://<resource>.services.ai.azure.com/models
-# AZURE_AI_API_KEY=<your-key>
-# AZURE_AI_MODEL=gpt-4o-mini   # or any chat model deployed in your Foundry project
+# Required:
+#   AUTH_SECRET=$(openssl rand -base64 32)
+#   AUTH_GITHUB_ID, AUTH_GITHUB_SECRET   — GitHub OAuth App (see below)
+#   AUTH_TRUST_HOST=true
+#   AUTH_URL=http://<host>/feed/api/auth — must include the /feed/api/auth path
+#   AZURE_AI_ENDPOINT=https://<resource>.services.ai.azure.com/openai/v1
+#   AZURE_AI_DEFAULT_MODEL=Llama-3.3-70B-Instruct
+# Optional (enables Umami pageview tracking):
+#   NEXT_PUBLIC_UMAMI_SRC=http://<host>:3000/script.js
+#   NEXT_PUBLIC_UMAMI_WEBSITE_ID=<uuid>
+#
+# Foundry auth is via the host VM's managed identity (no API key in env).
+# The VM must have a system-assigned identity with Cognitive Services User
+# role on the Foundry resource. Same setup as ai-playground.
 
-# 2. Build + run
+# 2. GitHub OAuth App: callback URL must be EXACTLY
+#    http://<host>/feed/api/auth/callback/github
+#    (or extend an existing OAuth App with this as an additional callback)
+
+# 3. Build + run
 docker compose build
 docker compose up -d
 
-# 3. Wire nginx (host)
+# 4. Wire nginx (host)
 sudo cp nginx/ai-feed.conf /etc/nginx/snippets/ai-feed.conf
-# Edit /etc/nginx/sites-available/<your-personal-site>.conf and add:
-#   include snippets/ai-feed.conf;
-# inside the server block, alongside the existing vpn-monitor / ai-playground includes.
+# Add `include snippets/ai-feed.conf;` to your personal-site server block,
+# alongside the existing vpn-monitor / ai-playground / traffic-monitor includes.
 sudo nginx -t && sudo systemctl reload nginx
 
-# 4. Smoke
-curl -I https://<your-host>/feed/login   # → 200
+# 5. Smoke
+curl -I http://<host>/feed/login   # → 200
 ```
 
 ### JSON contract
 
 `digest/<date>.json` is the contract between the agent and the portal.
 Schema lives in `web/src/types/digest.ts` (zod-validated on read).
-Don't add fields without updating both sides.
+Don't add fields without updating both sides. The Chinese version
+(`<date>.zh.json`) has identical shape; only the user-facing prose
+strings differ.
+
+### Auth.js + Next.js basePath quirk
+
+Next.js strips its app-level basePath (`/feed`) from `request.url` before
+calling route handlers, but Auth.js's `basePath: "/feed/api/auth"` config
+needs the full path to match for both inbound action parsing and outbound
+OAuth callback URL generation. The `[...nextauth]` route handler in
+`web/src/app/api/auth/[...nextauth]/route.ts` re-prepends `/feed` to fix
+this — same workaround used in `vpn-monitor`. Don't remove without
+breaking sign-in.
 
 ## What's not here yet
 
@@ -124,9 +167,13 @@ Don't add fields without updating both sides.
   deferred — not worth the maintenance cost yet.
 - **Cross-day memory.** Agent only sees today's feeds. Passing last-N-days
   digests in the prompt for week-over-week context isn't worth the tokens yet.
-- **Translation cache invalidation.** A second-run-of-the-day adds new
-  developments; the cached `<date>.zh.json` doesn't auto-refresh. To force
-  re-translate, delete the file and click 中文 again.
+- **Custom analytics events.** Umami currently captures only auto-pageviews.
+  Custom events (AI-explain clicks, language toggles, outbound clicks) would
+  need `umami.track(...)` calls in client components — wait until pageview
+  data shows what's worth instrumenting.
+- **Health endpoint.** `/api/health` returning `{latest_digest_age_hours,
+  failed_sources, ...}` would let an external prober alert when the agent
+  stalls. Doable in <30 lines; not built yet.
 
 ## Notes / quirks
 
