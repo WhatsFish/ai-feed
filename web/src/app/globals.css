@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light dark;
+}
+
+html {
+  font-feature-settings: "cv11", "ss01";
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    background: #0a0a0a;
+    color: #ededed;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  html {
+    background: #fafafa;
+    color: #171717;
+  }
+}
+
+a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
