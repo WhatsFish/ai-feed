@@ -1,0 +1,80 @@
+{
+  "date": "2026-05-07",
+  "tz": "Asia/Shanghai",
+  "runs": [
+    {
+      "run_at": "2026-05-07T08:13:00+08:00",
+      "headline": "Anthropic raises Claude Code limits and credits a SpaceX deal — capacity announcements are now marketing for named enterprise wins, not cluster scale.",
+      "developments": [
+        {
+          "id": "anthropic-claude-code-spacex",
+          "title": "Anthropic bumps Claude Code limits, points at a SpaceX deal",
+          "take": "Anthropic raised Claude Code rate limits and explicitly tied the headroom to a freshly announced SpaceX agreement. The story isn't the limit bump — it's that capacity expansions are now framed around marquee customer logos rather than generic 'we scaled the cluster' posts. Frontier labs are openly rebranding as infrastructure businesses, and SpaceX joining the customer board after the recent run of finance/defense names tells you who Anthropic is actually selling to.",
+          "links": [
+            { "label": "Ars Technica", "url": "https://arstechnica.com/ai/2026/05/anthropic-raises-claude-code-usage-limits-credits-new-deal-with-spacex/" }
+          ],
+          "tags": ["vendor:anthropic", "compute", "infrastructure", "claude-code", "enterprise"]
+        },
+        {
+          "id": "thinking-machines-on-policy-distillation",
+          "title": "Thinking Machines publishes on-policy LLM distillation writeup",
+          "take": "Mira Murati's lab dropped a substantive technical post on on-policy distillation — one of the few public signals so far that Thinking Machines is doing real research and not just hiring. The technique matters because vanilla teacher-student distillation leaves capability on the table when student behavior diverges from the teacher's distribution; on-policy variants close that gap and are quietly becoming the default in serious post-training stacks.",
+          "links": [
+            { "label": "thinkingmachines.ai blog", "url": "https://thinkingmachines.ai/blog/on-policy-distillation/" }
+          ],
+          "tags": ["paper", "distillation", "post-training", "vendor:thinking-machines"]
+        },
+        {
+          "id": "deepmind-october-backlog-reindexed",
+          "title": "DeepMind October drop lands in the feed in one batch: ICPC gold, Robotics 1.5, CodeMender",
+          "take": "The fetcher just ingested DeepMind's October release run as a single bundle — Gemini 2.5 Deep Think taking gold at ICPC World Finals, Gemini Robotics 1.5, the CodeMender code-security agent, fluid-dynamics breakthroughs, and an updated Frontier Safety Framework. None of it is today's news, but seen as a bundle it's a reminder that Google has been the most prolific frontier shop on actual capability shipments this past quarter while everyone else was tweeting about AGI.",
+          "links": [
+            { "label": "Gemini ICPC gold", "url": "https://deepmind.google/blog/gemini-achieves-gold-medal-level-at-the-international-collegiate-programming-contest-world-finals/" },
+            { "label": "Gemini Robotics 1.5", "url": "https://deepmind.google/blog/gemini-robotics-15-brings-ai-agents-into-the-physical-world/" },
+            { "label": "CodeMender", "url": "https://deepmind.google/blog/introducing-codemender-an-ai-agent-for-code-security/" },
+            { "label": "Frontier Safety Framework", "url": "https://deepmind.google/blog/strengthening-our-frontier-safety-framework/" }
+          ],
+          "tags": ["vendor:google", "agent", "robotics", "evaluation", "safety", "backlog"]
+        },
+        {
+          "id": "lawfare-voluntary-pre-deployment-vetting",
+          "title": "Lawfare floats voluntary pre-deployment AI vetting",
+          "take": "A Lawfare piece argues for a voluntary, light-touch pre-deployment vetting regime as the realistic policy off-ramp between full mandatory licensing and the current self-attested status quo. Worth reading because the people writing this stuff in mid-2026 are the ones who'll draft whatever survives Congress in 2027 — the Overton window for AI regulation is being staked out right now in publications most engineers don't read.",
+          "links": [
+            { "label": "Lawfare", "url": "https://www.lawfaremedia.org/article/kicking-the-tires--a-voluntary-path-to-pre-deployment-ai-vetting" }
+          ],
+          "tags": ["policy", "safety", "governance", "evaluation"]
+        }
+      ],
+      "themes": [
+        {
+          "title": "Capacity, not capability",
+          "body": "Today's biggest signals are about who's getting served and at what scale — Anthropic naming SpaceX, OpenAI parading Singular Bank and Uber case studies, DeepMind quietly partnering with Commonwealth Fusion Systems. Nobody released a new flagship model. The competitive surface in mid-2026 is enterprise contracts and infrastructure deals, not benchmark deltas."
+        }
+      ],
+      "worth_reading": [
+        {
+          "label": "Thinking Machines: On-Policy Distillation",
+          "url": "https://thinkingmachines.ai/blog/on-policy-distillation/",
+          "why": "The first piece of substantive technical writing from Murati's lab — read it to calibrate whether they're a real research org or a recruiting vehicle."
+        },
+        {
+          "label": "DeepMind: Gemini ICPC gold-medal writeup",
+          "url": "https://deepmind.google/blog/gemini-achieves-gold-medal-level-at-the-international-collegiate-programming-contest-world-finals/",
+          "why": "Still the most consequential evaluation result of the past quarter — competitive programming was supposed to be the last bastion."
+        },
+        {
+          "label": "Lawfare: voluntary AI vetting",
+          "url": "https://www.lawfaremedia.org/article/kicking-the-tires--a-voluntary-path-to-pre-deployment-ai-vetting",
+          "why": "The most realistic regulatory framing on offer right now; engineers should know what's being teed up before it shows up as a compliance ticket."
+        }
+      ],
+      "skipped_summary": "Skipped: the Telegraph and Guardian both running 'Richard Dawkins thinks AI is conscious' (pop-sci noise, ignored both); seven OpenAI Academy SEO posts (Brainstorming with ChatGPT, Healthcare, Getting Started, etc.) and two enterprise case studies (Singular Bank, Uber) that are press releases dressed as posts; HN small-fry (a programmer-survey landing page, an AI recruiter on Google Meet, an unmonitored-agents speculation thread); five HuggingFace papers too narrow to brief usefully (motion-aware video caching, orbit-space flow matching, perceptual flow networks, Mamba-SSM compression, point-cloud completion)."
+    }
+  ],
+  "stats": {
+    "raw_items": 29,
+    "sources_ok": 10,
+    "sources_failed": []
+  }
+}

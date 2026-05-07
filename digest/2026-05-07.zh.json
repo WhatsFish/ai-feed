@@ -1,0 +1,80 @@
+{
+  "date": "2026-05-07",
+  "tz": "Asia/Shanghai",
+  "runs": [
+    {
+      "run_at": "2026-05-07T08:13:00+08:00",
+      "headline": "Anthropic 上调 Claude Code 限额，并把功劳记在新签的 SpaceX 单子上 —— 容量公告已经变成了大客户 logo 的营销素材，而不是集群规模本身。",
+      "developments": [
+        {
+          "id": "anthropic-claude-code-spacex",
+          "title": "Anthropic 上调 Claude Code 限额，背后甩出 SpaceX 这张牌",
+          "take": "Anthropic 上调了 Claude Code 的 rate limit，并且明确把这部分余量绑定到刚宣布的 SpaceX 合作上。重点不在限额本身，而在于：现在容量扩张的叙事已经围绕大客户 logo 来包装，而不是过去那种 \"我们又扩了集群\" 的通稿。各家 frontier lab 正在公开把自己重新定位成 infra 生意，SpaceX 接在最近一连串金融、国防客户后面进入名单，基本就告诉你 Anthropic 真正在卖给谁了。",
+          "links": [
+            { "label": "Ars Technica", "url": "https://arstechnica.com/ai/2026/05/anthropic-raises-claude-code-usage-limits-credits-new-deal-with-spacex/" }
+          ],
+          "tags": ["vendor:anthropic", "compute", "infrastructure", "claude-code", "enterprise"]
+        },
+        {
+          "id": "thinking-machines-on-policy-distillation",
+          "title": "Thinking Machines 发了一篇 on-policy LLM distillation 的技术博客",
+          "take": "Mira Murati 的 lab 终于放出了一篇有干货的技术 post，主题是 on-policy distillation —— 也是迄今为止少数能证明 Thinking Machines 在真做研究、而不是只在挖人的公开信号之一。这个方向值得关注：传统 teacher-student distillation 在 student 行为偏离 teacher 分布时会丢掉一部分能力，on-policy 的变体能堵住这个缺口，正在悄悄变成认真做 post-training 的团队的默认选项。",
+          "links": [
+            { "label": "thinkingmachines.ai blog", "url": "https://thinkingmachines.ai/blog/on-policy-distillation/" }
+          ],
+          "tags": ["paper", "distillation", "post-training", "vendor:thinking-machines"]
+        },
+        {
+          "id": "deepmind-october-backlog-reindexed",
+          "title": "DeepMind 十月那波集中放出的内容今天一次性进了 feed：ICPC 金牌、Robotics 1.5、CodeMender",
+          "take": "抓取脚本一次性把 DeepMind 十月的那批发布全部吞进来了 —— Gemini 2.5 Deep Think 拿到 ICPC World Finals 金牌、Gemini Robotics 1.5、做代码安全的 CodeMender agent、流体力学百年问题的新解、外加更新版 Frontier Safety Framework。这些都不是今天的新闻，但作为一个整体看，提醒了一件事：上个季度真正在持续出能力的 frontier 团队就是 Google，其它家则忙着在 Twitter 上聊 AGI。",
+          "links": [
+            { "label": "Gemini ICPC gold", "url": "https://deepmind.google/blog/gemini-achieves-gold-medal-level-at-the-international-collegiate-programming-contest-world-finals/" },
+            { "label": "Gemini Robotics 1.5", "url": "https://deepmind.google/blog/gemini-robotics-15-brings-ai-agents-into-the-physical-world/" },
+            { "label": "CodeMender", "url": "https://deepmind.google/blog/introducing-codemender-an-ai-agent-for-code-security/" },
+            { "label": "Frontier Safety Framework", "url": "https://deepmind.google/blog/strengthening-our-frontier-safety-framework/" }
+          ],
+          "tags": ["vendor:google", "agent", "robotics", "evaluation", "safety", "backlog"]
+        },
+        {
+          "id": "lawfare-voluntary-pre-deployment-vetting",
+          "title": "Lawfare 提出一种自愿性的 AI 部署前评估机制",
+          "take": "Lawfare 上一篇文章主张走一条轻量、自愿的 pre-deployment vetting 路线，作为 \"全面强制 licensing\" 和 \"现状全靠厂商自己声明\" 之间的现实折中方案。值得读，因为 2026 年中在写这类东西的人，就是 2027 年真正能在国会场内留下东西的那批人 —— AI 监管的 Overton window 现在正在工程师不怎么读的几本刊物上被划定。",
+          "links": [
+            { "label": "Lawfare", "url": "https://www.lawfaremedia.org/article/kicking-the-tires--a-voluntary-path-to-pre-deployment-ai-vetting" }
+          ],
+          "tags": ["policy", "safety", "governance", "evaluation"]
+        }
+      ],
+      "themes": [
+        {
+          "title": "拼的是 capacity，不是 capability",
+          "body": "今天最大的信号都集中在 \"在服务谁、规模多大\" 上 —— Anthropic 甩 SpaceX、OpenAI 把 Singular Bank 和 Uber 的 case study 排着队发、DeepMind 默默和 Commonwealth Fusion Systems 合作。没人发新旗舰模型。2026 年中的竞争面已经是企业合同和基础设施 deal，不是 benchmark 上那点差距。"
+        }
+      ],
+      "worth_reading": [
+        {
+          "label": "Thinking Machines: On-Policy Distillation",
+          "url": "https://thinkingmachines.ai/blog/on-policy-distillation/",
+          "why": "Murati 的 lab 第一篇真正算技术写作的 post，用来校准他们到底是个真 research org 还是一个 recruiting vehicle。"
+        },
+        {
+          "label": "DeepMind: Gemini ICPC 金牌的官方文章",
+          "url": "https://deepmind.google/blog/gemini-achieves-gold-medal-level-at-the-international-collegiate-programming-contest-world-finals/",
+          "why": "上个季度最有分量的 evaluation 结果 —— 竞赛编程本来被认为是最后一道防线。"
+        },
+        {
+          "label": "Lawfare: 自愿性 AI 评估机制",
+          "url": "https://www.lawfaremedia.org/article/kicking-the-tires--a-voluntary-path-to-pre-deployment-ai-vetting",
+          "why": "目前最现实的监管框架描述；工程师最好在它变成合规 ticket 之前就知道上面在准备什么。"
+        }
+      ],
+      "skipped_summary": "跳过：Telegraph 和 Guardian 都在跑 \"Richard Dawkins 认为 AI 有意识\"（pop-sci 噪音，两边都没看）；OpenAI Academy 的七篇 SEO 文（Brainstorming with ChatGPT、Healthcare、Getting Started 等等）外加两个 enterprise case study（Singular Bank、Uber），本质都是包装成博客的通稿；HN 上的小鱼小虾（一个程序员问卷的 landing page、一个跑在 Google Meet 上的 AI 招聘工具、一个关于 unmonitored agents 的脑洞贴）；五篇 HuggingFace 论文太窄，不值得专门写（motion-aware 视频缓存、orbit-space flow matching、perceptual flow network、Mamba-SSM 压缩、点云补全）。"
+    }
+  ],
+  "stats": {
+    "raw_items": 29,
+    "sources_ok": 10,
+    "sources_failed": []
+  }
+}

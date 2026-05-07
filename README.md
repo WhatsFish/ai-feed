@@ -1,6 +1,7 @@
 # ai-feed
 
-Daily AI-frontier intelligence digest. Live at **http://20.89.176.30/feed**
+Daily AI-frontier intelligence digest. Live at
+**https://ai-native.japaneast.cloudapp.azure.com/feed**
 (public read, GitHub sign-in only required for the live "AI explain" feature).
 
 Three layers:
@@ -61,8 +62,8 @@ per run). Typical observed cost is well under that.
 
 ## Reading the digest
 
-The portal at **http://20.89.176.30/feed** is the primary reader. EN ↔ 中文
-toggle in the top right. No login required.
+The portal at **https://ai-native.japaneast.cloudapp.azure.com/feed** is the
+primary reader. EN ↔ 中文 toggle in the top right. No login required.
 
 For local / SSH:
 
@@ -113,7 +114,7 @@ cp .env.example .env
 #   AUTH_SECRET=$(openssl rand -base64 32)
 #   AUTH_GITHUB_ID, AUTH_GITHUB_SECRET   — GitHub OAuth App (see below)
 #   AUTH_TRUST_HOST=true
-#   AUTH_URL=http://<host>/feed/api/auth — must include the /feed/api/auth path
+#   AUTH_URL=https://<host>/feed/api/auth — must include the /feed/api/auth path
 #   AZURE_AI_ENDPOINT=https://<resource>.services.ai.azure.com/openai/v1
 #   AZURE_AI_DEFAULT_MODEL=Llama-3.3-70B-Instruct
 # Optional (enables Umami pageview tracking):
@@ -125,8 +126,9 @@ cp .env.example .env
 # role on the Foundry resource. Same setup as ai-playground.
 
 # 2. GitHub OAuth App: callback URL must be EXACTLY
-#    http://<host>/feed/api/auth/callback/github
-#    (or extend an existing OAuth App with this as an additional callback)
+#    https://<host>/feed/api/auth/callback/github
+#    (OAuth Apps allow only one callback URL — when migrating domains,
+#    overwrite, don't try to keep two)
 
 # 3. Build + run
 docker compose build
@@ -139,7 +141,7 @@ sudo cp nginx/ai-feed.conf /etc/nginx/snippets/ai-feed.conf
 sudo nginx -t && sudo systemctl reload nginx
 
 # 5. Smoke
-curl -I http://<host>/feed/login   # → 200
+curl -I https://<host>/feed/login   # → 200
 ```
 
 ### JSON contract
@@ -167,10 +169,15 @@ breaking sign-in.
   deferred — not worth the maintenance cost yet.
 - **Cross-day memory.** Agent only sees today's feeds. Passing last-N-days
   digests in the prompt for week-over-week context isn't worth the tokens yet.
-- **Custom analytics events.** Umami currently captures only auto-pageviews.
-  Custom events (AI-explain clicks, language toggles, outbound clicks) would
-  need `umami.track(...)` calls in client components — wait until pageview
-  data shows what's worth instrumenting.
+- **Umami over HTTPS.** Pageview tracking is currently paused — Umami runs at
+  `http://<host>:3000/script.js` and a HTTPS page can't load HTTP scripts
+  (mixed-content block). Fix: front Umami through the same nginx HTTPS server
+  block, then point `NEXT_PUBLIC_UMAMI_SRC` at `https://<host>/umami/script.js`
+  and re-enable.
+- **Custom analytics events.** Once pageviews are live again, custom events
+  (AI-explain clicks, language toggles, outbound clicks) via `umami.track(...)`
+  in client components — wait for pageview data to show what's worth
+  instrumenting.
 - **Health endpoint.** `/api/health` returning `{latest_digest_age_hours,
   failed_sources, ...}` would let an external prober alert when the agent
   stalls. Doable in <30 lines; not built yet.
