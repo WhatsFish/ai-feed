@@ -12,3 +12,10 @@ services:
       - ./digest:/data/digest:rw
     ports:
       - "127.0.0.1:3003:3000"
+
+# Join the shared bridge so /api/interpret can reach the Postgres container
+# at hostname `db` to log cost events (see cost-tracker repo).
+networks:
+  default:
+    name: traffic-monitor_default
+    external: true

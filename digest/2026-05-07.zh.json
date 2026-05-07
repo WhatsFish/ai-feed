@@ -4,12 +4,12 @@
   "runs": [
     {
       "run_at": "2026-05-07T08:13:00+08:00",
-      "headline": "Anthropic 上调 Claude Code 限额，并把功劳记在新签的 SpaceX 单子上 —— 容量公告已经变成了大客户 logo 的营销素材，而不是集群规模本身。",
+      "headline": "Anthropic 上调 Claude Code 限额并把 SpaceX 合作摆在前面 —— 现在的 capacity 公告是给名头大的企业客户做的营销，而不是讲集群规模。",
       "developments": [
         {
           "id": "anthropic-claude-code-spacex",
-          "title": "Anthropic 上调 Claude Code 限额，背后甩出 SpaceX 这张牌",
-          "take": "Anthropic 上调了 Claude Code 的 rate limit，并且明确把这部分余量绑定到刚宣布的 SpaceX 合作上。重点不在限额本身，而在于：现在容量扩张的叙事已经围绕大客户 logo 来包装，而不是过去那种 \"我们又扩了集群\" 的通稿。各家 frontier lab 正在公开把自己重新定位成 infra 生意，SpaceX 接在最近一连串金融、国防客户后面进入名单，基本就告诉你 Anthropic 真正在卖给谁了。",
+          "title": "Anthropic 上调 Claude Code 限额，挂上 SpaceX 这块招牌",
+          "take": "Anthropic 上调了 Claude Code 的 rate limit，并明确把空间归功于刚谈下的 SpaceX 合作。重点不是限额本身 —— 而是 capacity 扩容现在都围绕大客户 logo 做包装，不再是那种 '我们扩了集群' 的通稿。前沿 lab 正大方地把自己重新定位成基础设施生意，SpaceX 接在最近一连串金融、防务客户后面入列，已经说明 Anthropic 真正在卖给谁。",
           "links": [
             { "label": "Ars Technica", "url": "https://arstechnica.com/ai/2026/05/anthropic-raises-claude-code-usage-limits-credits-new-deal-with-spacex/" }
           ],
@@ -17,19 +17,19 @@
         },
         {
           "id": "thinking-machines-on-policy-distillation",
-          "title": "Thinking Machines 发了一篇 on-policy LLM distillation 的技术博客",
-          "take": "Mira Murati 的 lab 终于放出了一篇有干货的技术 post，主题是 on-policy distillation —— 也是迄今为止少数能证明 Thinking Machines 在真做研究、而不是只在挖人的公开信号之一。这个方向值得关注：传统 teacher-student distillation 在 student 行为偏离 teacher 分布时会丢掉一部分能力，on-policy 的变体能堵住这个缺口，正在悄悄变成认真做 post-training 的团队的默认选项。",
+          "title": "Thinking Machines 发出关于 on-policy LLM distillation 的技术博客",
+          "take": "Mira Murati 的 lab 终于发了一篇有干货的 on-policy distillation 技术博客 —— 这是迄今为数不多能证明 Thinking Machines 确实在做研究、不只是在抢人的公开信号。意义在于：常规的 teacher-student distillation 一旦 student 行为偏离 teacher 分布就会丢能力，而 on-policy 变体能把这块差距补回来，目前已经悄悄成为认真做 post-training 的标配。",
           "links": [
-            { "label": "thinkingmachines.ai blog", "url": "https://thinkingmachines.ai/blog/on-policy-distillation/" }
+            { "label": "thinkingmachines.ai 博客", "url": "https://thinkingmachines.ai/blog/on-policy-distillation/" }
           ],
           "tags": ["paper", "distillation", "post-training", "vendor:thinking-machines"]
         },
         {
           "id": "deepmind-october-backlog-reindexed",
-          "title": "DeepMind 十月那波集中放出的内容今天一次性进了 feed：ICPC 金牌、Robotics 1.5、CodeMender",
-          "take": "抓取脚本一次性把 DeepMind 十月的那批发布全部吞进来了 —— Gemini 2.5 Deep Think 拿到 ICPC World Finals 金牌、Gemini Robotics 1.5、做代码安全的 CodeMender agent、流体力学百年问题的新解、外加更新版 Frontier Safety Framework。这些都不是今天的新闻，但作为一个整体看，提醒了一件事：上个季度真正在持续出能力的 frontier 团队就是 Google，其它家则忙着在 Twitter 上聊 AGI。",
+          "title": "DeepMind 十月那波发布被 fetcher 一次性补抓：ICPC 金牌、Robotics 1.5、CodeMender",
+          "take": "fetcher 这次把 DeepMind 十月那波发布当成一个 batch 全部吃进来 —— Gemini 2.5 Deep Think 拿下 ICPC 世界总决赛金牌、Gemini Robotics 1.5、做代码安全的 CodeMender agent、流体力学的百年难题、还有更新版的 Frontier Safety Framework。这些都不是今天的新闻，但合在一起看就能提醒你：上个季度在真正出能力 shipment 的前沿厂里，Google 是最高产的那一家，其他人还忙着发推聊 AGI。",
           "links": [
-            { "label": "Gemini ICPC gold", "url": "https://deepmind.google/blog/gemini-achieves-gold-medal-level-at-the-international-collegiate-programming-contest-world-finals/" },
+            { "label": "Gemini ICPC 金牌", "url": "https://deepmind.google/blog/gemini-achieves-gold-medal-level-at-the-international-collegiate-programming-contest-world-finals/" },
             { "label": "Gemini Robotics 1.5", "url": "https://deepmind.google/blog/gemini-robotics-15-brings-ai-agents-into-the-physical-world/" },
             { "label": "CodeMender", "url": "https://deepmind.google/blog/introducing-codemender-an-ai-agent-for-code-security/" },
             { "label": "Frontier Safety Framework", "url": "https://deepmind.google/blog/strengthening-our-frontier-safety-framework/" }
@@ -38,8 +38,8 @@
         },
         {
           "id": "lawfare-voluntary-pre-deployment-vetting",
-          "title": "Lawfare 提出一种自愿性的 AI 部署前评估机制",
-          "take": "Lawfare 上一篇文章主张走一条轻量、自愿的 pre-deployment vetting 路线，作为 \"全面强制 licensing\" 和 \"现状全靠厂商自己声明\" 之间的现实折中方案。值得读，因为 2026 年中在写这类东西的人，就是 2027 年真正能在国会场内留下东西的那批人 —— AI 监管的 Overton window 现在正在工程师不怎么读的几本刊物上被划定。",
+          "title": "Lawfare 提出自愿性的 pre-deployment AI 审查思路",
+          "take": "Lawfare 上的一篇文章在论证：在完全强制许可和现状那种自报式之间，比较现实的政策出口是一套自愿、轻触的 pre-deployment 审查。值得读，因为在 2026 年中写这类文章的人，正是 2027 年帮国会起草最终法案的人 —— AI 监管的 Overton 窗口此刻正在那些工程师不读的刊物里被一寸寸划线。",
           "links": [
             { "label": "Lawfare", "url": "https://www.lawfaremedia.org/article/kicking-the-tires--a-voluntary-path-to-pre-deployment-ai-vetting" }
           ],
@@ -48,32 +48,114 @@
       ],
       "themes": [
         {
-          "title": "拼的是 capacity，不是 capability",
-          "body": "今天最大的信号都集中在 \"在服务谁、规模多大\" 上 —— Anthropic 甩 SpaceX、OpenAI 把 Singular Bank 和 Uber 的 case study 排着队发、DeepMind 默默和 Commonwealth Fusion Systems 合作。没人发新旗舰模型。2026 年中的竞争面已经是企业合同和基础设施 deal，不是 benchmark 上那点差距。"
+          "title": "比的是 capacity，不是 capability",
+          "body": "今天最大的信号都是在讲 '谁拿到服务、规模多大' —— Anthropic 把 SpaceX 拎出来、OpenAI 把 Singular Bank 和 Uber 当 case study 推、DeepMind 闷声和 Commonwealth Fusion Systems 合作。没有任何一家发新旗舰模型。2026 年中的竞争面已经从 benchmark 差距挪到了企业合同和基础设施 deal 上。"
         }
       ],
       "worth_reading": [
         {
           "label": "Thinking Machines: On-Policy Distillation",
           "url": "https://thinkingmachines.ai/blog/on-policy-distillation/",
-          "why": "Murati 的 lab 第一篇真正算技术写作的 post，用来校准他们到底是个真 research org 还是一个 recruiting vehicle。"
+          "why": "Murati lab 第一篇有分量的技术写作 —— 用它来校准这家是真 research org 还是招聘空壳。"
         },
         {
-          "label": "DeepMind: Gemini ICPC 金牌的官方文章",
+          "label": "DeepMind: Gemini ICPC 金牌技术博客",
           "url": "https://deepmind.google/blog/gemini-achieves-gold-medal-level-at-the-international-collegiate-programming-contest-world-finals/",
-          "why": "上个季度最有分量的 evaluation 结果 —— 竞赛编程本来被认为是最后一道防线。"
+          "why": "上个季度最有分量的评测结果 —— 竞赛编程本来被认为是最后一块阵地。"
         },
         {
-          "label": "Lawfare: 自愿性 AI 评估机制",
+          "label": "Lawfare: 自愿性 AI 审查方案",
           "url": "https://www.lawfaremedia.org/article/kicking-the-tires--a-voluntary-path-to-pre-deployment-ai-vetting",
-          "why": "目前最现实的监管框架描述；工程师最好在它变成合规 ticket 之前就知道上面在准备什么。"
+          "why": "目前最接近现实的监管框架；工程师应该提前知道这套会以什么形式落到合规 ticket 上。"
         }
       ],
-      "skipped_summary": "跳过：Telegraph 和 Guardian 都在跑 \"Richard Dawkins 认为 AI 有意识\"（pop-sci 噪音，两边都没看）；OpenAI Academy 的七篇 SEO 文（Brainstorming with ChatGPT、Healthcare、Getting Started 等等）外加两个 enterprise case study（Singular Bank、Uber），本质都是包装成博客的通稿；HN 上的小鱼小虾（一个程序员问卷的 landing page、一个跑在 Google Meet 上的 AI 招聘工具、一个关于 unmonitored agents 的脑洞贴）；五篇 HuggingFace 论文太窄，不值得专门写（motion-aware 视频缓存、orbit-space flow matching、perceptual flow network、Mamba-SSM 压缩、点云补全）。"
+      "skipped_summary": "跳过：Telegraph 和 Guardian 同时在炒 'Richard Dawkins 觉得 AI 有意识'（科普口水，两条都丢了）；OpenAI Academy 的七篇 SEO 文（Brainstorming with ChatGPT、Healthcare、Getting Started 等）和两篇企业 case study（Singular Bank、Uber）—— 全是包了一层博客皮的通稿；HN 上的小角料（程序员调研 landing page、做 Google Meet 的 AI 招聘机器人、瞎猜 unmonitored agent 的帖子）；五篇 HuggingFace 论文太窄不值得单写（motion-aware 视频缓存、orbit-space flow matching、perceptual flow network、Mamba-SSM 压缩、点云补全）。"
+    },
+    {
+      "run_at": "2026-05-07T20:13:00+08:00",
+      "headline": "早上那条 Anthropic-SpaceX 包装，今晚揭底成 Anthropic 向 xAI 的 Colossus I 租 300MW、年付 ~50 亿美元 —— Anthropic 现在在向直接竞争对手的数据中心买算力，Musk 是这局里的 kingmaker。",
+      "developments": [
+        {
+          "id": "anthropic-xai-colossus-deal",
+          "title": "Anthropic 向 xAI 的 Colossus I 租 300MW，年付约 50 亿美元",
+          "take": "Latent Space 的复盘把早上 'Anthropic + SpaceX' 那层模糊包装拆开了：300MW、~$5B/年，从 xAI 在 Memphis 的 Colossus I 出，Anthropic 的 ARR 增速被点成 '8000% annualized'。重点不是价格 —— 是结构。Anthropic 宁愿付钱给叙事上最直接的对手 Musk 的 xAI 拿 capacity，也不愿等 Amazon 的 Project Rainier 或下一批 Trainium 上线。算力供给已经和模型阵营脱钩；Musk 卖铲子愿意卖给所有人，这就让他成了那篇文章说的 kingmaker。",
+          "links": [
+            { "label": "Latent Space 复盘", "url": "https://www.latent.space/p/ainews-anthropic-spacexais-300mw5byr" },
+            { "label": "Reuters", "url": "https://www.reuters.com/business/retail-consumer/anthropic-unveils-dreaming-feature-help-its-ai-agents-self-improve-2026-05-06/" }
+          ],
+          "tags": ["vendor:anthropic", "vendor:xai", "compute", "infrastructure", "deal"]
+        },
+        {
+          "id": "anthropic-dreaming-managed-agents",
+          "title": "Anthropic 给 Managed Agents 上了 'dreaming' 和多 agent 编排",
+          "take": "Claude Managed Agents 这个产品多了一个 'dreaming' 特性 —— 空闲时回放 trace、提炼 skill、自己更新自己的脚手架，相当于 offline consolidation；同时还配了官方第一方的多 agent 编排。把营销话术撕掉，'dreaming' 本质就是在 agent 自己的 experience replay buffer 上做 sleep-time fine-tune，把它叫梦只是文案好听，不是新技术。真正重要的是：Anthropic 现在把 '会自我修改的 agent' 当托管产品在卖，编排层也意味着 agent-of-agents 这一层他们要自己吃下来，不再让位给 LangGraph、CrewAI。agent 平台栈正在被从顶上往下吃。",
+          "links": [
+            { "label": "Anthropic 博客", "url": "https://claude.com/blog/new-in-claude-managed-agents" },
+            { "label": "Reuters", "url": "https://www.reuters.com/business/retail-consumer/anthropic-unveils-dreaming-feature-help-its-ai-agents-self-improve-2026-05-06/" }
+          ],
+          "tags": ["vendor:anthropic", "agent", "agent-platform", "self-improvement", "orchestration"]
+        },
+        {
+          "id": "dragos-ai-water-utility-attack",
+          "title": "Dragos 披露：攻击者借 AI 打美国某水务公司 OT 网络",
+          "take": "Dragos 发了一篇事件复盘，描述对手用 LLM 加速侦察、解析 ICS 协议、生成 PLC 载荷，目标是一家水务公司。报告很谨慎地把 AI 定为 enabler 而不是入侵向量 —— 但这是首例公开 IR 案例，AI 给攻击者带来的提升在关键基础设施 OT 环境里达到了 operationally significant 的程度。这正是攻防圈一直在等的临界点；预计一个季度内 CISA 会出指引，所有人 threat model 里也会被加上一节专门讲 OT。",
+          "links": [
+            { "label": "Dragos", "url": "https://www.dragos.com/blog/ai-assisted-ics-attack-water-utility" }
+          ],
+          "tags": ["security", "ics", "critical-infrastructure", "incident", "policy"]
+        },
+        {
+          "id": "stream-r1-stream-t1-streaming-video",
+          "title": "流式视频生成的 arXiv 周：Stream-R1 与 Stream-T1 占据 daily papers 榜首",
+          "take": "两篇做 streaming video diffusion 的论文同一时间窗内分别拿到 102 和 86 的 HuggingFace 点赞。Stream-R1 给 autoregressive streaming video 的 distribution-matching distillation 引入了 reliability-perplexity 感知的 reward；Stream-T1 把 test-time scaling 套到同一个范式上。两者都在啃同一个瓶颈 —— 蒸馏后的 streaming video 模型如何在不爆 cost 的前提下做 inference 阶段的引导。Veo 3.1 和 Sora 这一档迟早要吸纳这套；学术侧只是先到了。",
+          "links": [
+            { "label": "Stream-R1", "url": "https://huggingface.co/papers/2605.03849" },
+            { "label": "Stream-T1", "url": "https://huggingface.co/papers/2605.04461" }
+          ],
+          "tags": ["paper", "video", "diffusion", "distillation", "test-time-scaling"]
+        },
+        {
+          "id": "gemma-cancer-pathway",
+          "title": "基于 Gemma 27B 的单细胞基础模型给出一条候选癌症通路",
+          "take": "DeepMind 这套单细胞 foundation model —— 用开权重的 Gemma 27B 做 base —— 生成了一条此前未表征过的治疗通路假设，由学术合作方在湿实验里验证。这是今年第三个高调的 'AI 发现生物学' 结果，也是最可信的一个，因为权重是开的。判别信号很简单：lab 把模型挂上 HuggingFace 就当真，不挂的把通稿当产品看就行。",
+          "links": [
+            { "label": "DeepMind 博客", "url": "https://deepmind.google/blog/how-a-gemma-model-helped-discover-a-new-potential-cancer-therapy-pathway/" }
+          ],
+          "tags": ["vendor:google", "open-weight", "science", "biology", "foundation-model"]
+        }
+      ],
+      "themes": [
+        {
+          "title": "算力已经是可替代商品，Musk 手里握着仓库",
+          "body": "Anthropic 向 xAI 租 capacity 一年前还不可想象；这是迄今最高调的证据 —— 前沿 lab 看待算力已经像航空公司看待航油：谁有就买谁的，政治账后面再算。叠加早上那条 SpaceX 包装，2026 年的护城河彻底落到 '能拿到电和变电站' 这一层，跟算法新意已经没多大关系。"
+        },
+        {
+          "title": "会自我变化的 agent 才是新的产品形态",
+          "body": "'Dreaming'、Managed Agents、多 agent 编排、HN 上那篇 self-briefing Claude，全部在收敛到同一个钩子：agent 在 session 之间能更新自己的 context、脚手架或权重。各家都在抢 'agent 历史 = agent 能力' 的那一层，因为锁定就长在那里。"
+        }
+      ],
+      "worth_reading": [
+        {
+          "label": "Latent Space: Anthropic-xAI 300MW Colossus 交易",
+          "url": "https://www.latent.space/p/ainews-anthropic-spacexais-300mw5byr",
+          "why": "目前唯一一篇带真实数字 + kingmaker 视角的复盘 —— 用它弄清楚 Anthropic 的经济账为什么是今天变的而不是昨天。"
+        },
+        {
+          "label": "Anthropic: Managed Agents 新功能（dreaming、outcomes、orchestration）",
+          "url": "https://claude.com/blog/new-in-claude-managed-agents",
+          "why": "把比喻撕了看，就是 agent 自我改进的产品化形态；其它 lab 接下来基本会照抄这个模板。"
+        },
+        {
+          "label": "Dragos: AI 辅助的水务 ICS 攻击",
+          "url": "https://www.dragos.com/blog/ai-assisted-ics-attack-water-utility",
+          "why": "首次有可信 IR 证据显示 AI 提升在 OT 上真起作用了；做关键基础设施的人应该把这当一记闹钟。"
+        }
+      ],
+      "skipped_summary": "跳过：Yale/Axios 那篇 'AI 生产力涌现 + 财政展望'（宏观空想）；HBR 的 'Future Is Shrouded in an AI Fog'（咨询师在写 fog 里的 fog）；Backroadz 那篇 self-briefing Claude Substack（context engineering 角度有意思，但和今天 Anthropic 的 dreaming 公告高度重复）；Google 用 QR code 当 CAPTCHA 防 AI bot（有趣但不重要）；又七篇 OpenAI Academy 的 SEO landing page（operations、marketing、writing、prompting、AI fundamentals、responsible use、Full Fan Mode 比赛规则）；Parloa 的语音 agent 客户故事（PR）；Bliss 的 'backlog 质量扫描' Show HN（又一个 AI 生产力创业）；以及三篇没单写的 HuggingFace 论文（RLDX-1 VLA、HERMES++ driving world model、PhysForge 3D 资产）。"
     }
   ],
   "stats": {
-    "raw_items": 29,
+    "raw_items": 30,
     "sources_ok": 10,
     "sources_failed": []
   }

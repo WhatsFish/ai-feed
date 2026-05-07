@@ -36,15 +36,30 @@ type ChatCompletionsArgs = {
   response_format?: { type: "json_object" } | { type: "text" };
 };
 
+export type ChatUsage = {
+  prompt_tokens: number | null;
+  completion_tokens: number | null;
+  total_tokens: number | null;
+};
+
+export type ChatCompleteResult = {
+  content: string;
+  model: string;
+  usage: ChatUsage;
+  durationMs: number;
+};
+
 /**
  * Single non-streaming chat completion against the OpenAI-compatible endpoint.
+ * Returns content + usage so callers can log token counts to the cost-tracker.
  * Throws on upstream error so the caller can wrap with the appropriate
  * HTTP response.
  */
-export async function chatComplete(args: ChatCompletionsArgs): Promise<string> {
+export async function chatComplete(args: ChatCompletionsArgs): Promise<ChatCompleteResult> {
   if (!AZURE_AI_ENDPOINT) throw new Error("AZURE_AI_ENDPOINT not set");
   if (!AZURE_AI_DEFAULT_MODEL) throw new Error("AZURE_AI_DEFAULT_MODEL not set");
 
+  const started = Date.now();
   const token = await getAzureAIToken();
   const r = await fetch(`${AZURE_AI_ENDPOINT.replace(/\/$/, "")}/chat/completions`, {
     method: "POST",
@@ -66,7 +81,20 @@ export async function chatComplete(args: ChatCompletionsArgs): Promise<string> {
     const body = await r.text().catch(() => "");
     throw new Error(`Azure AI ${r.status}: ${body.slice(0, 300)}`);
   }
-  type ChatResp = { choices?: { message?: { content?: string } }[] };
+  type ChatResp = {
+    choices?: { message?: { content?: string } }[];
+    usage?: { prompt_tokens?: number; completion_tokens?: number; total_tokens?: number };
+    model?: string;
+  };
   const data = (await r.json()) as ChatResp;
-  return data.choices?.[0]?.message?.content?.trim() ?? "";
+  return {
+    content: data.choices?.[0]?.message?.content?.trim() ?? "",
+    model: data.model ?? AZURE_AI_DEFAULT_MODEL,
+    usage: {
+      prompt_tokens: data.usage?.prompt_tokens ?? null,
+      completion_tokens: data.usage?.completion_tokens ?? null,
+      total_tokens: data.usage?.total_tokens ?? null,
+    },
+    durationMs: Date.now() - started,
+  };
 }

@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import { auth } from "@/lib/auth";
 import { chatComplete } from "@/lib/azure-ai";
+import { estimateCostUsd, logCostEvent } from "@/lib/cost-log";
 import { getDigest } from "@/lib/digest";
 
 export const runtime = "nodejs";
@@ -66,9 +67,9 @@ export async function POST(req: NextRequest) {
     .filter((s) => s !== null)
     .join("\n");
 
-  let text: string;
+  let result;
   try {
-    text = await chatComplete({
+    result = await chatComplete({
       messages: [
         { role: "system", content: sys },
         { role: "user", content: userMsg },
@@ -80,6 +81,19 @@ export async function POST(req: NextRequest) {
     return new Response(`upstream: ${e instanceof Error ? e.message : "unknown"}`, { status: 502 });
   }
 
-  if (!text) return new Response("empty model response", { status: 502 });
-  return Response.json({ text });
+  if (!result.content) return new Response("empty model response", { status: 502 });
+
+  // Best-effort cost log; doesn't block the response.
+  void logCostEvent({
+    service: "foundry-interpret",
+    provider: "azure-foundry",
+    model: result.model,
+    inputTokens: result.usage.prompt_tokens,
+    outputTokens: result.usage.completion_tokens,
+    costUsd: estimateCostUsd(result.model, result.usage.prompt_tokens, result.usage.completion_tokens),
+    durationMs: result.durationMs,
+    metadata: { date, developmentId: devId, dev_title: dev.title },
+  });
+
+  return Response.json({ text: result.content });
 }

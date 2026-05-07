@@ -70,10 +70,92 @@
         }
       ],
       "skipped_summary": "Skipped: the Telegraph and Guardian both running 'Richard Dawkins thinks AI is conscious' (pop-sci noise, ignored both); seven OpenAI Academy SEO posts (Brainstorming with ChatGPT, Healthcare, Getting Started, etc.) and two enterprise case studies (Singular Bank, Uber) that are press releases dressed as posts; HN small-fry (a programmer-survey landing page, an AI recruiter on Google Meet, an unmonitored-agents speculation thread); five HuggingFace papers too narrow to brief usefully (motion-aware video caching, orbit-space flow matching, perceptual flow networks, Mamba-SSM compression, point-cloud completion)."
+    },
+    {
+      "run_at": "2026-05-07T20:13:00+08:00",
+      "headline": "The Anthropic-SpaceX wrapper from this morning resolves into a 300MW / $5B-per-year rental of xAI's Colossus I — Anthropic is now buying compute from a direct competitor's data center, and Musk is the kingmaker.",
+      "developments": [
+        {
+          "id": "anthropic-xai-colossus-deal",
+          "title": "Anthropic rents 300MW from xAI's Colossus I for ~$5B/yr",
+          "take": "Latent Space puts numbers on this morning's vague 'Anthropic + SpaceX' framing: 300MW, ~$5B/yr, sourced out of xAI's Colossus I in Memphis, with Anthropic ARR growth quoted as '8000% annualized.' The story isn't the price — it's the structure. Anthropic is paying its most direct narrative competitor (Musk's xAI) for capacity rather than waiting on Amazon's Project Rainier or another Trainium build-out. Compute supply has decoupled from model loyalty; Musk is willing to sell shovels to anyone, and that makes him the kingmaker the post calls out.",
+          "links": [
+            { "label": "Latent Space breakdown", "url": "https://www.latent.space/p/ainews-anthropic-spacexais-300mw5byr" },
+            { "label": "Reuters", "url": "https://www.reuters.com/business/retail-consumer/anthropic-unveils-dreaming-feature-help-its-ai-agents-self-improve-2026-05-06/" }
+          ],
+          "tags": ["vendor:anthropic", "vendor:xai", "compute", "infrastructure", "deal"]
+        },
+        {
+          "id": "anthropic-dreaming-managed-agents",
+          "title": "Anthropic ships 'dreaming' and multi-agent orchestration for Managed Agents",
+          "take": "Claude's Managed Agents product gained a 'dreaming' feature — offline consolidation where idle agents replay traces, distill skills, and update their own scaffolding — plus first-party multi-agent orchestration. Strip the marketing and 'dreaming' is sleep-time fine-tuning on the agent's own experience replay buffer; calling it a dream is good copy, not a new technique. What matters is that Anthropic is now selling self-modifying agents as a managed product, and the orchestration piece means they're taking the agent-of-agents layer in-house instead of leaving it to LangGraph and CrewAI. The agent-platform stack is getting eaten from the top.",
+          "links": [
+            { "label": "Anthropic blog", "url": "https://claude.com/blog/new-in-claude-managed-agents" },
+            { "label": "Reuters", "url": "https://www.reuters.com/business/retail-consumer/anthropic-unveils-dreaming-feature-help-its-ai-agents-self-improve-2026-05-06/" }
+          ],
+          "tags": ["vendor:anthropic", "agent", "agent-platform", "self-improvement", "orchestration"]
+        },
+        {
+          "id": "dragos-ai-water-utility-attack",
+          "title": "Dragos: AI-assisted attack on a US water utility's OT network",
+          "take": "Dragos published an incident writeup describing an adversary using LLMs to accelerate reconnaissance, ICS protocol parsing, and PLC payload generation against a water utility. The report is careful to call AI an enabler, not the breach vector — but it's the first public IR case where the AI uplift was operationally significant against a critical-infrastructure OT environment. This is the threshold the offensive-security community has been waiting on; expect CISA guidance and an OT-specific section in everyone's threat models within a quarter.",
+          "links": [
+            { "label": "Dragos", "url": "https://www.dragos.com/blog/ai-assisted-ics-attack-water-utility" }
+          ],
+          "tags": ["security", "ics", "critical-infrastructure", "incident", "policy"]
+        },
+        {
+          "id": "stream-r1-stream-t1-streaming-video",
+          "title": "Streaming video generation: Stream-R1 and Stream-T1 top the daily papers",
+          "take": "Two streaming video diffusion papers cleared 100 and 86 HuggingFace upvotes in the same window. Stream-R1 introduces a reliability-perplexity aware reward for distribution-matching distillation in autoregressive streaming video; Stream-T1 brings test-time scaling to the same regime. Both are attacking the same bottleneck — distilled streaming video models that can be steered at inference time without exploding cost. Veo 3.1 and Sora-class models will eventually adopt this stack; the academic side is just getting there first.",
+          "links": [
+            { "label": "Stream-R1", "url": "https://huggingface.co/papers/2605.03849" },
+            { "label": "Stream-T1", "url": "https://huggingface.co/papers/2605.04461" }
+          ],
+          "tags": ["paper", "video", "diffusion", "distillation", "test-time-scaling"]
+        },
+        {
+          "id": "gemma-cancer-pathway",
+          "title": "Gemma 27B single-cell foundation model surfaces a candidate cancer pathway",
+          "take": "DeepMind's single-cell foundation model — built on the open Gemma 27B base — generated a hypothesis about a previously uncharacterized therapeutic pathway, which an academic collaborator then validated wet-lab. This is the third high-profile 'AI-discovered biology' result of the year and the most credible one because the model weights are open. Discriminating signal: when the lab puts the model on HuggingFace, take it seriously; when they don't, treat the press release as the product.",
+          "links": [
+            { "label": "DeepMind blog", "url": "https://deepmind.google/blog/how-a-gemma-model-helped-discover-a-new-potential-cancer-therapy-pathway/" }
+          ],
+          "tags": ["vendor:google", "open-weight", "science", "biology", "foundation-model"]
+        }
+      ],
+      "themes": [
+        {
+          "title": "Compute is now a fungible commodity, and Musk owns the warehouse",
+          "body": "Anthropic renting from xAI was unthinkable a year ago; it's the highest-profile evidence yet that frontier labs treat compute the way airlines treat jet fuel — buy it from whoever has it, hedge politics later. Combined with the morning's SpaceX framing, it confirms that the competitive moat in 2026 is access to power-and-substation, not algorithmic novelty."
+        },
+        {
+          "title": "Agents that change themselves are the new product surface",
+          "body": "'Dreaming,' Managed Agents, multi-agent orchestration, and the self-briefing Claude essay floating on HN all converge on the same hook: agents that update their own context, scaffolding, or weights between sessions. The vendors are racing to own the layer where the agent's history becomes its capability, because that's where lock-in lives."
+        }
+      ],
+      "worth_reading": [
+        {
+          "label": "Latent Space: Anthropic-xAI 300MW Colossus deal",
+          "url": "https://www.latent.space/p/ainews-anthropic-spacexais-300mw5byr",
+          "why": "The only writeup with the actual numbers and the kingmaker framing — read it to understand why Anthropic's economics changed today, not yesterday."
+        },
+        {
+          "label": "Anthropic: New in Managed Agents (dreaming, outcomes, orchestration)",
+          "url": "https://claude.com/blog/new-in-claude-managed-agents",
+          "why": "Strip the metaphor and you're looking at the productized form of agent self-improvement; this is the template every other lab will copy."
+        },
+        {
+          "label": "Dragos: AI-assisted ICS attack on a water utility",
+          "url": "https://www.dragos.com/blog/ai-assisted-ics-attack-water-utility",
+          "why": "The first credible IR case where AI uplift mattered against OT; if you build for critical infrastructure, this is your wake-up call."
+        }
+      ],
+      "skipped_summary": "Skipped: Yale/Axios 'AI productivity surge fiscal outlook' (macro speculation), HBR's 'Future Is Shrouded in an AI Fog' (consultant fog about consultant fog), the Backroadz 'self-briefing Claude' Substack (interesting context-engineering essay but redundant with the Anthropic dreaming announcement), Google's QR-code CAPTCHA against AI bots (cute, not consequential), seven more OpenAI Academy SEO landing pages (operations, marketing, writing, prompting, AI fundamentals, responsible use, Full Fan Mode contest), the Parloa voice-agent customer story (PR), Bliss 'backlog quality scanner' Show HN (yet another AI productivity startup), and three HuggingFace papers not featured (RLDX-1 VLA, HERMES++ driving world model, PhysForge 3D assets)."
     }
   ],
   "stats": {
-    "raw_items": 29,
+    "raw_items": 30,
     "sources_ok": 10,
     "sources_failed": []
   }
