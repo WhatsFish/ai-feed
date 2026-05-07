@@ -169,15 +169,11 @@ breaking sign-in.
   deferred — not worth the maintenance cost yet.
 - **Cross-day memory.** Agent only sees today's feeds. Passing last-N-days
   digests in the prompt for week-over-week context isn't worth the tokens yet.
-- **Umami over HTTPS.** Pageview tracking is currently paused — Umami runs at
-  `http://<host>:3000/script.js` and a HTTPS page can't load HTTP scripts
-  (mixed-content block). Fix: front Umami through the same nginx HTTPS server
-  block, then point `NEXT_PUBLIC_UMAMI_SRC` at `https://<host>/umami/script.js`
-  and re-enable.
-- **Custom analytics events.** Once pageviews are live again, custom events
-  (AI-explain clicks, language toggles, outbound clicks) via `umami.track(...)`
-  in client components — wait for pageview data to show what's worth
-  instrumenting.
+- **Custom analytics events.** Umami currently captures only auto-pageviews
+  (snippet served from `https://<host>/umami/script.js`). Custom events
+  (AI-explain clicks, language toggles, outbound clicks) via
+  `umami.track(...)` in client components — wait for pageview data to show
+  what's worth instrumenting.
 - **Health endpoint.** `/api/health` returning `{latest_digest_age_hours,
   failed_sources, ...}` would let an external prober alert when the agent
   stalls. Doable in <30 lines; not built yet.
