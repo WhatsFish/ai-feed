@@ -28,7 +28,10 @@ UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chr
 # pre-warmed by warm-rsshub.sh from cron). Most upstreams return in <2s.
 TIMEOUT = 30
 MAX_PER_SOURCE = 8           # default cap items per source per run
-DESC_CHARS = 280             # truncate excerpts
+DESC_CHARS = 1500            # truncate excerpts — leaves enough room for
+                             # the agent to see lede + key claim + a detail
+                             # or two without inflating the input file beyond
+                             # ~230KB (~19 sources × 8 items × 1500).
 
 # Sources whose URL matches these substrings get a custom JSON handler
 HF_DAILY_PAPERS = "huggingface.co/api/daily_papers"
