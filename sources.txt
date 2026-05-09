@@ -7,12 +7,24 @@ OpenAI | https://openai.com/news/rss.xml
 Google DeepMind | https://deepmind.google/blog/rss.xml
 Microsoft Research | https://www.microsoft.com/en-us/research/feed/
 
+# --- Microsoft ecosystem ---
+# Microsoft Research alone produced ~zero developments over the first week
+# (narrow academic surface). These two cover product/agent/Foundry/Copilot.
+# blogs.microsoft.com/ai/feed/ and news.microsoft.com/feed/ both 403 behind
+# Cloudflare — skip until they relax.
+GitHub Blog | https://github.blog/feed/
+Microsoft Foundry | https://devblogs.microsoft.com/foundry/feed
+
 # --- Editorial blogs / newsletters ---
 Interconnects (Nathan Lambert) | https://www.interconnects.ai/feed
 Smol AI News | https://buttondown.com/ainews/rss
 Simon Willison | https://simonwillison.net/atom/everything/
 Latent Space | https://www.latent.space/feed
 Ahead of AI (Sebastian Raschka) | https://magazine.sebastianraschka.com/feed
+
+# --- Practitioners / AI-native work ---
+One Useful Thing (Ethan Mollick) | https://www.oneusefulthing.org/feed
+Pragmatic Engineer | https://newsletter.pragmaticengineer.com/feed
 
 # --- Papers / trends ---
 # HF Daily Papers: community-curated, sorted by upvotes; the fetcher special-cases
