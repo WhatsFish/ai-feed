@@ -19,7 +19,7 @@ START_ISO=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 set +e
 "$CLAUDE_BIN" -p "$(cat agent-task.md)" \
   --dangerously-skip-permissions \
-  --max-budget-usd 2 \
+  --max-budget-usd 5 \
   --add-dir "$PROJECT_DIR"
 EXIT=$?
 set -e
