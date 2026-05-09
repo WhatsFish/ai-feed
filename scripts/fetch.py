@@ -164,8 +164,19 @@ def extract_items(xml_bytes: bytes):
     xml_bytes = xml_bytes.lstrip(b"\xef\xbb\xbf").lstrip()
     try:
         root = ET.fromstring(xml_bytes)
-    except ET.ParseError as e:
-        raise RuntimeError(f"XML parse error: {e}")
+    except ET.ParseError:
+        # One known recoverable case: Apple's machinelearning.apple.com feed
+        # ships titles like "... Machine Learning & AI 2026" with the literal
+        # ampersand unescaped, which violates XML. Escape any lone & that
+        # isn't already part of a numeric/named entity, then retry. If that
+        # still fails, surface the original error.
+        import re as _re
+        text = xml_bytes.decode("utf-8", "replace")
+        fixed = _re.sub(r"&(?![a-zA-Z]+;|#\d+;|#x[0-9a-fA-F]+;)", "&amp;", text)
+        try:
+            root = ET.fromstring(fixed.encode("utf-8"))
+        except ET.ParseError as e:
+            raise RuntimeError(f"XML parse error: {e}")
 
     rname = localname(root.tag)
     items_out = []

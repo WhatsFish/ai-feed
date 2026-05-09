@@ -5,10 +5,15 @@
 # --- Frontier labs ---
 # OpenAI via RSSHub returns full article body (~8KB/item) where the official
 # feed only emits ~150-char teasers. DeepMind's RSSHub route is a passthrough
-# of an already-thin feed, so we keep the official URL there.
+# of an already-thin feed, so we keep the official URL there. Apple's RSS
+# is technically malformed (unescaped `&` in titles); fetch.py recovers.
+# Apple Newsroom and Developer News are too marketing/App-Store-heavy to
+# add — the few real Apple Intelligence announcements get caught by Smol
+# AI / Simon Willison anyway.
 OpenAI | http://127.0.0.1:3007/openai/news
 Google DeepMind | https://deepmind.google/blog/rss.xml
 Microsoft Research | https://www.microsoft.com/en-us/research/feed/
+Apple ML Research | https://machinelearning.apple.com/rss.xml
 
 # --- Microsoft ecosystem ---
 # Microsoft Research alone produced ~zero developments over the first week
