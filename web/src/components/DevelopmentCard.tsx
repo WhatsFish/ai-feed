@@ -7,10 +7,10 @@ import type { Development } from "@/types/digest";
 export function DevelopmentCard({ dev, date }: { dev: Development; date: string }) {
   return (
     <article id={dev.id} className="space-y-2.5 scroll-mt-20">
-      <div className="flex flex-wrap items-start gap-3">
-        <h3 className="flex-1 min-w-0 text-base font-semibold leading-snug">{dev.title}</h3>
+      <h3 className="text-base font-semibold leading-snug">
+        {dev.title}
         <ShareButton dev={dev} date={date} />
-      </div>
+      </h3>
       <p className="text-[15px] leading-relaxed text-neutral-700 dark:text-neutral-300 whitespace-pre-line">{dev.take}</p>
       {dev.links.length > 0 ? (
         <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
