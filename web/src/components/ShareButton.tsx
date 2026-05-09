@@ -50,7 +50,7 @@ export function ShareButton({ dev, date }: { dev: Development; date: string }) {
       <button
         onClick={() => setOpen((v) => !v)}
         aria-label={L.share}
-        className="ml-auto inline-flex items-center gap-1 px-2 py-0.5 text-xs rounded border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800"
+        className="shrink-0 inline-flex items-center gap-1 px-2 py-0.5 text-xs rounded border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800"
       >
         <Share2 size={11} />
         {L.share}
