@@ -8,8 +8,13 @@ The user has explicitly asked for **your judgment**, not a feed reader. Be subje
 
 1. Run `python3 scripts/fetch.py` to refresh the raw feeds. The script appends today's items to `feeds/$(date +%F).md` and updates `seen.json`. Capture its stdout — you'll need the per-source counts and the total-new-items number.
 2. Read `feeds/$(date +%F).md` end-to-end. This is the raw input.
-3. Decide what matters. Synthesize.
-4. Emit **three** outputs under `digest/` (create the directory if missing):
+3. **Deep-fetch the thin tail.** Some sources only emit short RSS excerpts (~75–500 chars), so the raw feed gives you the title and lede but not enough to write a take with substance. For items whose excerpt looks too thin *and* whose title suggests it could be one of today's developments, use **WebFetch** on the item's link to pull the full article and synthesize from that.
+   - Most relevant for: Substack feeds (Mollick, Interconnects, Latent Space, Ahead of AI, Pragmatic Engineer), Google DeepMind, NVIDIA Developer, GitHub Blog, Microsoft Foundry/Research.
+   - **Don't fetch** when the excerpt already runs ~1500 chars — the Anthropic routes, OpenAI (via RSSHub), METR, AlignmentForum, Smol AI, and Simon Willison all give enough body in the feed.
+   - **Budget ~10 fetches per run.** This is for upgrading items you're already considering, not reading every link.
+   - **Failures fall back silently:** paywall (Pragmatic and Ahead of AI cut at the public preview), 403, timeout → use the RSS excerpt and move on. Don't retry. Don't mention failures in the prose.
+4. Decide what matters. Synthesize.
+5. Emit **three** outputs under `digest/` (create the directory if missing):
    - `digest/$(date +%F).md` — human-readable prose, 400–700 words
    - `digest/$(date +%F).json` — strict structured form, schema below
    - `digest/$(date +%F).zh.json` — same JSON, translated to simplified Chinese
