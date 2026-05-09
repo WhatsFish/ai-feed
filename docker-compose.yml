@@ -13,6 +13,25 @@ services:
     ports:
       - "127.0.0.1:3003:3000"
 
+  # Self-hosted RSSHub. Bridges sites that don't publish RSS — currently
+  # used for transformer-circuits.pub and Anthropic's research/engineering/
+  # red-team blogs (sources.txt routes them through 127.0.0.1:3007).
+  # Public RSSHub instances are mostly dead or Cloudflare-blocked, so we
+  # run our own. Default in-memory cache is fine; we hit it twice a day.
+  rsshub:
+    image: diygod/rsshub:latest
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      # 24h cache. fetch.py runs twice daily (12h apart); a 24h cache keeps
+      # second-fetch hot every time, and the pre-warm cron (xx:08) refreshes
+      # before each scheduled fetch (xx:13). /anthropic/research takes ~100s
+      # on a cold cache because RSSHub fetches each paper page; warming it
+      # on its own cadence keeps fetch.py inside its TIMEOUT.
+      CACHE_EXPIRE: "86400"
+    ports:
+      - "127.0.0.1:3007:1200"
+
 # Join the shared bridge so /api/interpret can reach the Postgres container
 # at hostname `db` to log cost events (see cost-tracker repo).
 networks:

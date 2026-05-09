@@ -23,7 +23,10 @@ FEEDS_DIR = ROOT / "feeds"
 LOG = ROOT / "fetch.log"
 
 UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 ai-feed/0.1"
-TIMEOUT = 15
+# 30s tolerates an occasional cold-cache hit on the self-hosted RSSHub
+# bridge (/anthropic/research can take ~100s cold, but that surface is
+# pre-warmed by warm-rsshub.sh from cron). Most upstreams return in <2s.
+TIMEOUT = 30
 MAX_PER_SOURCE = 8           # default cap items per source per run
 DESC_CHARS = 280             # truncate excerpts
 

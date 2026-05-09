@@ -34,9 +34,20 @@ NVIDIA Developer | https://developer.nvidia.com/blog/feed
 # --- Safety / alignment / evals ---
 # AlignmentForum is theory + community discussion; METR is empirical capability
 # evals (autonomous R&D, weeks-long coding, agent monitoring red-team).
-# transformer-circuits.pub (Anthropic interpretability) has no RSS — 403.
 AlignmentForum (curated) | https://www.alignmentforum.org/feed.xml?view=curated-rss
 METR | https://metr.org/feed.xml
+
+# --- Anthropic (via self-hosted RSSHub bridge) ---
+# Anthropic publishes no RSS, but RSSHub has community-maintained scrapers.
+# Routes resolve through the rsshub container at 127.0.0.1:3007 (see
+# docker-compose.yml). The cache is pre-warmed by warm-rsshub.sh at xx:08
+# because /anthropic/research is ~100s cold (RSSHub fetches each paper).
+# /transformer-circuits route OOMs the RSSHub container (50+ paper pages
+# fetched in parallel); /anthropic/research already covers most interp
+# papers, so we skip tc.pub.
+Anthropic Research | http://127.0.0.1:3007/anthropic/research
+Anthropic Engineering | http://127.0.0.1:3007/anthropic/engineering
+Anthropic Frontier Red Team | http://127.0.0.1:3007/anthropic/red
 
 # --- Papers / trends ---
 # HF Daily Papers: community-curated, sorted by upvotes; the fetcher special-cases
