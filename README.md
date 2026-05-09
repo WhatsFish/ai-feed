@@ -177,6 +177,12 @@ breaking sign-in.
 - **Health endpoint.** `/api/health` returning `{latest_digest_age_hours,
   failed_sources, ...}` would let an external prober alert when the agent
   stalls. Doable in <30 lines; not built yet.
+- **Personal center / saved items.** Auth.js + GitHub OAuth already gates
+  `/api/interpret`, so the user identity is in scope. Missing pieces: a
+  `bookmarks` table keyed by `(user_id, digest_date, development_id)`, a
+  bookmark button on each `DevelopmentCard` (next to Share / AI explain),
+  and a `/feed/me` page listing saved items across days. Same Postgres
+  container as the cost log.
 
 ## Notes / quirks
 
