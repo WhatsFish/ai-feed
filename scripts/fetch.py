@@ -178,7 +178,10 @@ def extract_items(xml_bytes: bytes):
             title = text_of(find_first(item, "title"))
             link = text_of(find_first(item, "link"))
             date = text_of(find_first(item, "pubDate", "date", "published"))
-            desc = text_of(find_first(item, "description", "summary", "content"))
+            # WordPress/Substack/etc. emit a short teaser in <description> and
+            # the full post body in <content:encoded> (localname "encoded").
+            # Prefer the body when both are present.
+            desc = text_of(find_first(item, "encoded", "description", "summary", "content"))
             guid = text_of(find_first(item, "guid")) or link
             items_out.append({
                 "title": strip_html(title),

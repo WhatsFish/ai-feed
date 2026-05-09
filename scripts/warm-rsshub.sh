@@ -17,6 +17,7 @@ ROUTES=(
   "/anthropic/research"
   "/anthropic/engineering"
   "/anthropic/red"
+  "/openai/news"
 )
 
 for route in "${ROUTES[@]}"; do
