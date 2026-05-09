@@ -1,6 +1,7 @@
 import { ExternalLink } from "lucide-react";
 import { TagBadge } from "./TagBadge";
 import { InterpretButton } from "./InterpretButton";
+import { ShareButton } from "./ShareButton";
 import type { Development } from "@/types/digest";
 
 export function DevelopmentCard({ dev, date }: { dev: Development; date: string }) {
@@ -28,6 +29,7 @@ export function DevelopmentCard({ dev, date }: { dev: Development; date: string 
         {dev.tags.map((t) => (
           <TagBadge key={t} tag={t} />
         ))}
+        <ShareButton dev={dev} date={date} />
         <InterpretButton date={date} developmentId={dev.id} />
       </div>
     </article>
