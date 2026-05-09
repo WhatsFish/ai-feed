@@ -26,6 +26,18 @@ Ahead of AI (Sebastian Raschka) | https://magazine.sebastianraschka.com/feed
 One Useful Thing (Ethan Mollick) | https://www.oneusefulthing.org/feed
 Pragmatic Engineer | https://newsletter.pragmaticengineer.com/feed
 
+# --- Hardware / infrastructure ---
+# Developer-blog flavor: kernels, inference engineering, NVL72, quantization,
+# NCCL — not the corporate `blogs.nvidia.com` marketing surface.
+NVIDIA Developer | https://developer.nvidia.com/blog/feed
+
+# --- Safety / alignment / evals ---
+# AlignmentForum is theory + community discussion; METR is empirical capability
+# evals (autonomous R&D, weeks-long coding, agent monitoring red-team).
+# transformer-circuits.pub (Anthropic interpretability) has no RSS — 403.
+AlignmentForum (curated) | https://www.alignmentforum.org/feed.xml?view=curated-rss
+METR | https://metr.org/feed.xml
+
 # --- Papers / trends ---
 # HF Daily Papers: community-curated, sorted by upvotes; the fetcher special-cases
 # this URL to take only the top 5 by upvote count.

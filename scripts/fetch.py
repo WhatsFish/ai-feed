@@ -152,6 +152,10 @@ def extract_hf_daily_papers(raw: bytes):
 
 def extract_items(xml_bytes: bytes):
     """Yield dicts {title, link, date, summary, guid} for either RSS or Atom."""
+    # Some publishers (METR, occasional WordPress sites) emit a UTF-8 BOM or
+    # blank lines before the <?xml ...?> declaration, which strict ElementTree
+    # rejects. Trim both before parsing.
+    xml_bytes = xml_bytes.lstrip(b"\xef\xbb\xbf").lstrip()
     try:
         root = ET.fromstring(xml_bytes)
     except ET.ParseError as e:
